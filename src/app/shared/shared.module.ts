@@ -1,4 +1,4 @@
-import { HeroineFormComponent } from './heroine-form/heroine-form.component';
+import { HeroineFormComponent } from './components/heroine-form/heroine-form.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
