@@ -1,3 +1,5 @@
+import { CoreModule } from './core/core.module';
+import { RouterModule } from '@angular/router';
 import { OthersModule } from './others/others.module';
 import { SharedModule } from './shared/shared.module';
 import { environment } from '../environments/environment';
@@ -6,19 +8,19 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
-
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './core/components/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     SharedModule,
     OthersModule,
+    RouterModule.forRoot([]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule
