@@ -4,3 +4,10 @@
 body {
     padding-top: 80px;
 }
+
+.form-control.ng-touched.ng-invalid {
+    border: 2px solid red;
+}
+.error-message {
+    color: red;
+}

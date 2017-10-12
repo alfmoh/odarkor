@@ -1,3 +1,4 @@
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroineFormComponent implements OnInit {
 
-  constructor() { }
+form: FormGroup;
+
+  constructor(fb: FormBuilder) {
+    this.form = fb.group({
+      name: ["",Validators.required],
+      country: ["", Validators.required],
+      dateOfBirth: [""],
+      dateOfDeath: [""],
+      knownFor: ["", Validators.required],
+      achievementDetails: ["", Validators.required],
+    })
+   }
 
   ngOnInit() {
+  }
+
+  get name (){
+    return this.form.get("name");
+  }
+  get country (){
+    return this.form.get("country");
+  }
+  get knownFor (){
+    return this.form.get("knownFor");
+  }
+  
+  get achievementDetails (){
+    return this.form.get("achievementDetails");
+  }
+
+  submit(input){
+    console.log(input);
   }
 
 }
