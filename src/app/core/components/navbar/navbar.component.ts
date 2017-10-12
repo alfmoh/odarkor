@@ -1,4 +1,7 @@
+import { AuthService } from '../../../shared/services/auth.service';
+import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'navbar',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+user$ : Observable<firebase.User>;
+
+  constructor(private auth: AuthService) {
+    this.user$ = auth.getUser();
+   }
 
   ngOnInit() {
+  }
+
+  logout(){
+    this.auth.logout();
   }
 
 }
