@@ -1,3 +1,6 @@
+import { PostsService } from './services/posts.service';
+import { AppErrorHandler } from './error/app-error-handler';
+import { ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HeroineFormComponent } from './components/heroine-form/heroine-form.component';
@@ -16,6 +19,7 @@ import { CommonModule } from '@angular/common';
   declarations: [
     HeroineFormComponent
   ],
+  providers: [{provide: ErrorHandler, useClass: AppErrorHandler}, PostsService],
   exports: [HeroineFormComponent]
 })
 export class SharedModule { }

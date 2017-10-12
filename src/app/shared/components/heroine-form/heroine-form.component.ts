@@ -1,3 +1,4 @@
+import { PostsService } from './../../services/posts.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +11,8 @@ export class HeroineFormComponent implements OnInit {
 
 form: FormGroup;
 
-  constructor(fb: FormBuilder) {
+  constructor(private postsService: PostsService,
+    fb: FormBuilder,) {
     this.form = fb.group({
       name: ["",Validators.required],
       country: ["", Validators.required],
@@ -39,7 +41,7 @@ form: FormGroup;
   }
 
   submit(input){
-    console.log(input);
+    this.postsService.create(input);
   }
 
 }
