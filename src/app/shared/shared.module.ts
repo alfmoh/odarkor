@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { PostsService } from './services/posts.service';
 import { AppErrorHandler } from './error/app-error-handler';
@@ -16,13 +17,13 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     ReactiveFormsModule,
     NgbModule.forRoot(),
     RouterModule.forChild([
-      {path: "heroine-form", component: HeroineFormComponent}
+      {path: "heroine-form", component: HeroineFormComponent, canActivate: [AuthGuardService]}
     ])
   ],
   declarations: [
     HeroineFormComponent
   ],
-  providers: [{provide: ErrorHandler, useClass: AppErrorHandler}, PostsService,AuthService],
+  providers: [{provide: ErrorHandler, useClass: AppErrorHandler}, PostsService,AuthService, AuthGuardService],
   exports: [HeroineFormComponent, NgbModule.forRoot().ngModule]
 })
 export class SharedModule { }
