@@ -1,3 +1,4 @@
+import { UserService } from './shared/services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from './shared/services/auth.service';
 import { Component } from '@angular/core';
@@ -10,9 +11,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   constructor(
     private auth: AuthService,
-    router: Router
+    router: Router,
+    private userService: UserService
   ){
-    auth.getUser().subscribe(user => {
+    userService.getUser().subscribe(user => {
       let returnUrl = localStorage.getItem("returnUrl");
       if(!returnUrl) return;
 

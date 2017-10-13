@@ -21,7 +21,4 @@ export class AuthService {
         this.router.navigate(["/"]);
     }
 
-    getUser(){
-        return this.afAuth.authState;
-    }
 }

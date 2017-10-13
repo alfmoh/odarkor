@@ -1,3 +1,4 @@
+import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { PostsService } from './services/posts.service';
@@ -23,7 +24,12 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
   declarations: [
     HeroineFormComponent
   ],
-  providers: [{provide: ErrorHandler, useClass: AppErrorHandler}, PostsService,AuthService, AuthGuardService],
+  providers: [
+    {provide: ErrorHandler, useClass: AppErrorHandler}, 
+    PostsService,
+    AuthService, 
+    AuthGuardService,
+    UserService],
   exports: [HeroineFormComponent, NgbModule.forRoot().ngModule]
 })
 export class SharedModule { }
