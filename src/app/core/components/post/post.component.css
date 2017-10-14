@@ -1,0 +1,39 @@
+.all {
+  position: relative;
+  padding-left: 5%;
+}
+
+.module {
+  width: 300px;
+  height: 200px;
+  margin: 10px 0 0 10px;
+  position: relative;
+  float: left;
+  background-color: white;
+}
+
+.module h2 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 900;
+  color: black;
+  text-transform: uppercase;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  font-size: 2rem;
+  transform: translate(-50%, -50%);
+}
+
+.desc p {
+  font-family: 'Vollkorn', serif;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: black;
+  margin: 0;
+}
+
+.heading {
+  text-align: center;
+}
