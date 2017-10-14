@@ -2,12 +2,12 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class PostsService {
+export class HeroService {
 
   constructor(private db: AngularFireDatabase) { }
 
-create(article){
-  return this.db.list("/heroes").push(article);
-}
+  getAll() {
+    return this.db.list("/heroes");
+  }
 
 }

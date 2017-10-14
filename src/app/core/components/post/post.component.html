@@ -36,5 +36,17 @@
       <p>Freedom fighter in the 20th century.</p>
     </div>
   </div>
+  <div class="module">
+    <h2 class="heading">ABC</h2>
+    <div class="desc">
+      <p>Freedom fighter in the 20th century.</p>
+    </div>
+  </div>
+  <div class="module" *ngFor="let h of heroes$ | async " >
+    <h2 class="heading">{{h.name}}</h2>
+    <div class="desc">
+      <p>{{h.knownFor}}</p>
+    </div>
+  </div>
 
 </div>

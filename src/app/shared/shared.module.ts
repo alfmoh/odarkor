@@ -1,3 +1,6 @@
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { HeroService } from './services/hero.service';
 import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
@@ -16,6 +19,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forChild([
       {path: "heroine-form", component: HeroineFormComponent, canActivate: [AuthGuardService]}
@@ -29,7 +34,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     PostsService,
     AuthService, 
     AuthGuardService,
+    HeroService,
     UserService],
-  exports: [HeroineFormComponent, NgbModule.forRoot().ngModule]
+  exports: [
+    HeroineFormComponent, 
+    NgbModule.forRoot().ngModule,
+    AngularFireDatabaseModule, AngularFireAuthModule]
 })
 export class SharedModule { }

@@ -1,4 +1,6 @@
+import { HeroService } from './../../../shared/services/hero.service';
 import { Component, OnInit } from '@angular/core';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'post',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+heroes$;
 
-  constructor() { }
+  constructor(private heroService: HeroService) { 
+    this.heroes$= this.heroService.getAll();   
+  }
 
   ngOnInit() {
+    
   }
 
 }

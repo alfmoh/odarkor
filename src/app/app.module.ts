@@ -21,9 +21,7 @@ import { HomeComponent } from './core/components/home/home.component';
     SharedModule,
     OthersModule,
     RouterModule.forRoot([]),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
