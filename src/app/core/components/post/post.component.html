@@ -43,7 +43,8 @@
     </div>
   </div>
   <div class="module" *ngFor="let h of heroes$ | async " >
-    <h2 class="heading">{{h.name}}</h2>
+    <a [routerLink]="['/profile/',h.$key]">
+    <h2 class="heading">{{h.name}}</h2></a>
     <div class="desc">
       <p>{{h.knownFor}}</p>
     </div>

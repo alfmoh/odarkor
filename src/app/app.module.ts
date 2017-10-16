@@ -20,7 +20,9 @@ import { HomeComponent } from './core/components/home/home.component';
     CoreModule,
     SharedModule,
     OthersModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([   
+      {path: '**', redirectTo: '/'}
+    ]),
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],

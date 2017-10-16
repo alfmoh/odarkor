@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { PostComponent } from './components/post/post.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthGuardService } from '../shared/services/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     RouterModule.forChild([
       { path: "", component: HomeComponent },
       { path: "login", component: LoginComponent },
-      { path: "profile", component: ProfileComponent }
+      {path: "profile/:id", component: ProfileComponent}
     ])
   ],
   declarations: [HomeComponent, NavbarComponent, LoginComponent, PostComponent, ProfileComponent],

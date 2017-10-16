@@ -23,7 +23,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forChild([
-      {path: "heroine-form", component: HeroineFormComponent, canActivate: [AuthGuardService]}
+      {path: "article-form", component: HeroineFormComponent, canActivate: [AuthGuardService]}
     ])
   ],
   declarations: [

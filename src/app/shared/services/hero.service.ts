@@ -10,4 +10,8 @@ export class HeroService {
     return this.db.list("/heroes");
   }
 
+  get(heroId){
+    return this.db.object("/heroes/" + heroId);
+  }
+
 }
