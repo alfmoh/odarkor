@@ -1,0 +1,16 @@
+.not-found {
+    font-family: 'Amatic SC', cursive;
+    padding-top: 10%;
+    text-align: center;
+    font-size: 200%;
+}
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 25px;
+}

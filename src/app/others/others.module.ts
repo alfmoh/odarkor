@@ -1,7 +1,8 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FaqComponent } from './faq/faq.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 @NgModule({
   imports: [
@@ -10,6 +11,6 @@ import { FaqComponent } from './faq/faq.component';
       {path: "faq", component: FaqComponent}
     ])
   ],
-  declarations: [FaqComponent]
+  declarations: [FaqComponent, NotfoundComponent]
 })
 export class OthersModule { }

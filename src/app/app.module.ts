@@ -1,3 +1,4 @@
+import { NotfoundComponent } from './others/components/notfound/notfound.component';
 import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 import { OthersModule } from './others/others.module';
@@ -20,8 +21,9 @@ import { HomeComponent } from './core/components/home/home.component';
     CoreModule,
     SharedModule,
     OthersModule,
-    RouterModule.forRoot([   
-      {path: '**', redirectTo: '/'}
+    RouterModule.forRoot([
+      {path: "404", component: NotfoundComponent},   
+      {path: '**', redirectTo: '404'}
     ]),
     AngularFireModule.initializeApp(environment.firebase)
   ],
