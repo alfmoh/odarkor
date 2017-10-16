@@ -13,6 +13,7 @@ import { HeroineFormComponent } from './components/heroine-form/heroine-form.com
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     NgbModule.forRoot(),
     RouterModule.forChild([
       {path: "article-form", component: HeroineFormComponent, canActivate: [AuthGuardService]}
-    ])
+    ]),
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   declarations: [
     HeroineFormComponent

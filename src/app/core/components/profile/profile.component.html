@@ -18,8 +18,8 @@
     <div class="col">
       <div class="name">{{hero.name}}</div>
       <br>
-      <div>
-        {{hero.achievementDetails}}
+      <div [innerHTML]= "hero.achievementDetails">
+        
       </div>
     </div>
   </div>
