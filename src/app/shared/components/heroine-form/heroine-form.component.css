@@ -1,9 +1,14 @@
-
 .container {
-    background: #efefef;
+  background: #efefef;
 }
 
 .submitForm {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.center {
+  left: 0;
+  right: 0;
+  margin: auto;
 }

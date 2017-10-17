@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { PostsService } from './../../services/posts.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -10,8 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class HeroineFormComponent implements OnInit {
 
 form: FormGroup;
+user;
 
   constructor(private postsService: PostsService,
+    private userService: UserService,
     fb: FormBuilder,) {
     this.form = fb.group({
       name: ["",Validators.required],
@@ -21,6 +24,7 @@ form: FormGroup;
       knownFor: ["", Validators.required],
       achievementDetails: ["", Validators.required],
     })
+    this.userService.getUser().subscribe(user=>this.user = user);
    }
 
   ngOnInit() {
@@ -41,6 +45,7 @@ form: FormGroup;
   }
 
   submit(input){
+    input.user = this.user.displayName;
     this.postsService.create(input);
   }
 

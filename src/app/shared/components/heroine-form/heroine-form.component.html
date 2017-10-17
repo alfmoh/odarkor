@@ -2,50 +2,58 @@
   <!-- <div class="container col-md-4 col-md-offset-4"> -->
   <div class="container ">
     <div class="submitForm">
+      <div class="col-md-8 center">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input formControlName="name" id="name" class="form-control" type="text">
+              <div *ngIf="name.touched && name.invalid">
+                <div class="error-message">Name is required.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="country">Сountry</label>
+              <input formControlName="country" id="country" class="form-control" type="text">
+              <div *ngIf="country.touched && country.invalid">
+                <div class="error-message">Country is required.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="dateOfBirth">Date of birth</label>
+              <input formControlName="dateOfBirth" id="dateOfBirth" class="form-control" type="date">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="dateOfDeath">Died</label>
+              <input formControlName="dateOfDeath" id="dateOfDeath" class="form-control" type="date">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="knownFor">Known For</label>
+          <input formControlName="knownFor" id="knownFor" class="form-control" type="text">
+          <div *ngIf="knownFor.touched && knownFor.invalid">
+            <div class="error-message">Known attributes are required.</div>
+          </div>
+        </div>
+      </div>
       <div class="form-group">
-      <label for="name">Name</label>
-      <input formControlName="name" id="name" class="form-control" type="text">
-      <div *ngIf="name.touched && name.invalid">
-        <div class="error-message">Name is required.</div>
+        <label for="achievementDetails">Achievement Details</label>
+        <!-- <textarea formControlName="achievementDetails" class="form-control" id="achievementDetails" rows="3"></textarea> -->
+        <div formControlName="achievementDetails" [froalaEditor]></div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="country">Сountry</label>
-      <input formControlName="country" id="country" class="form-control" type="text">
-      <div *ngIf="country.touched && country.invalid">
-        <div class="error-message">Country is required.</div>
+      <div *ngIf="achievementDetails.touched && achievementDetails.invalid">
+        <div class="error-message">Achievement details are required.</div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
-          <input formControlName="dateOfBirth" id="dateOfBirth" class="form-control" type="date">
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="dateOfDeath">Died</label>
-          <input formControlName="dateOfDeath" id="dateOfDeath" class="form-control" type="date">
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="knownFor">Known For</label>
-      <input formControlName="knownFor" id="knownFor" class="form-control" type="text">
-      <div *ngIf="knownFor.touched && knownFor.invalid">
-        <div class="error-message">Known attributes are required.</div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="achievementDetails">Achievement Details</label>
-      <!-- <textarea formControlName="achievementDetails" class="form-control" id="achievementDetails" rows="3"></textarea> -->
-      <div formControlName="achievementDetails" [froalaEditor]>Hello, Froala!</div>
-    </div>
-    <div *ngIf="achievementDetails.touched && achievementDetails.invalid">
-      <div class="error-message">Achievement details are required.</div>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>

@@ -1,50 +1,8 @@
 <div class="container all">
-
-  <div class="module">
-    <h2 class="heading">Yaa Asantewaa</h2>
-    <div class="desc">
-      <p>Freedom fighter in the 20th century.</p>
-    </div>
-  </div>
-  <div class="module">
-    <h2 class="heading">Nzinga Mbandi</h2>
-    <div class="desc">
-      <p>Freedom fighter in the 20th century.</p>
-    </div>
-  </div>
-  <div class="module">
-    <h2 class="heading">Bibi Titi Mohamed</h2>
-    <div class="desc">
-      <p>Freedom fighter in the 20th century.</p>
-    </div>
-  </div>
-  <div class="module">
-    <h2 class="heading">Huda Sha’rawi</h2>
-    <div class="desc">
-      <p>Freedom fighter in the 20th century.</p>
-    </div>
-  </div>
-  <div class="module">
-    <h2 class="heading">Charlotte Maxeke</h2>
-    <div class="desc">
-      <p>Freedom fighter in the 20th century.</p>
-    </div>
-  </div>
-  <div class="module">
-    <h2 class="heading">Wangari Muta Maathai</h2>
-    <div class="desc">
-      <p>Freedom fighter in the 20th century.</p>
-    </div>
-  </div>
-  <div class="module">
-    <h2 class="heading">ABC</h2>
-    <div class="desc">
-      <p>Freedom fighter in the 20th century.</p>
-    </div>
-  </div>
-  <div class="module" *ngFor="let h of heroes$ | async " >
+  <div class="module" *ngFor="let h of heroes$ | async ">
     <a [routerLink]="['/profile/',h.$key]">
-    <h2 class="heading">{{h.name}}</h2></a>
+      <h2 class="heading">{{h.name}}</h2>
+    </a>
     <div class="desc">
       <p>{{h.knownFor}}</p>
     </div>
