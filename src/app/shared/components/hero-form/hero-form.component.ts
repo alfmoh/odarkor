@@ -4,11 +4,11 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'heroine-form',
-  templateUrl: './heroine-form.component.html',
-  styleUrls: ['./heroine-form.component.css']
+  selector: 'hero-form',
+  templateUrl: './hero-form.component.html',
+  styleUrls: ['./hero-form.component.css']
 })
-export class HeroineFormComponent implements OnInit {
+export class HeroFormComponent implements OnInit {
 
 form: FormGroup;
 user;

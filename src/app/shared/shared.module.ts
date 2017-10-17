@@ -9,7 +9,7 @@ import { AppErrorHandler } from './error/app-error-handler';
 import { ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HeroineFormComponent } from './components/heroine-form/heroine-form.component';
+import { HeroFormComponent } from './components/hero-form/hero-form.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -24,12 +24,12 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forChild([
-      {path: "article-form", component: HeroineFormComponent, canActivate: [AuthGuardService]}
+      {path: "article-form", component: HeroFormComponent, canActivate: [AuthGuardService]}
     ]),
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   declarations: [
-    HeroineFormComponent
+    HeroFormComponent
   ],
   providers: [
     {provide: ErrorHandler, useClass: AppErrorHandler}, 
@@ -39,7 +39,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     HeroService,
     UserService],
   exports: [
-    HeroineFormComponent, 
+    HeroFormComponent, 
     NgbModule.forRoot().ngModule,
     AngularFireDatabaseModule, AngularFireAuthModule]
 })
