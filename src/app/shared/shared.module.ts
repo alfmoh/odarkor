@@ -1,3 +1,4 @@
+import { TimeOptions } from './../others/utilities/time-options';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HeroService } from './services/hero.service';
@@ -39,6 +40,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     AuthService, 
     AuthGuardService,
     HeroService,
+    TimeOptions,
     UserService],
   exports: [
     HeroFormComponent, 

@@ -14,12 +14,12 @@ export class HeroFormComponent implements OnInit {
 
 form: FormGroup;
 user;
-timeOptions = new TimeOptions();
-birthDateOptions = this.timeOptions.birthDateOptions;
-deathDateOptions = this.timeOptions.deathDateOptions;
+birthDateOptions;
+deathDateOptions;
 
   constructor(private postsService: PostsService,
     private userService: UserService,
+    timeOptions: TimeOptions,
     fb: FormBuilder,) {
     this.form = fb.group({
       name: ["",Validators.required],
@@ -31,6 +31,9 @@ deathDateOptions = this.timeOptions.deathDateOptions;
       datePicker: [null, Validators.required]
     })
     this.userService.getUser().subscribe(user=>this.user = user);
+
+    this.birthDateOptions = timeOptions.birthDateOptions;
+    this.deathDateOptions = timeOptions.deathDateOptions;
    }
 
   ngOnInit() {
