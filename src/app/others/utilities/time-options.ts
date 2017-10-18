@@ -6,7 +6,6 @@ export class TimeOptions {
     public birthDateOptions: IMyDpOptions = {
         editableDateField: false,
         openSelectorOnInputClick: true,
-        dateFormat: 'dd.mm.yyyy',
         showTodayBtn: false,
         disableSince: {
             year: this.currentTime.getFullYear() - 14,

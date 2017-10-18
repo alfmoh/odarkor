@@ -1,3 +1,4 @@
+import { OthersModule } from './../others/others.module';
 import { TimeOptions } from './../others/utilities/time-options';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -14,7 +15,6 @@ import { HeroFormComponent } from './components/hero-form/hero-form.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({
@@ -24,12 +24,12 @@ import { MyDatePickerModule } from 'mydatepicker';
     ReactiveFormsModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    OthersModule,
     NgbModule.forRoot(),
     MyDatePickerModule,
     RouterModule.forChild([
       {path: "article-form", component: HeroFormComponent, canActivate: [AuthGuardService]}
-    ]),
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    ])
   ],
   declarations: [
     HeroFormComponent
@@ -45,6 +45,7 @@ import { MyDatePickerModule } from 'mydatepicker';
   exports: [
     HeroFormComponent, 
     NgbModule.forRoot().ngModule,
-    AngularFireDatabaseModule, AngularFireAuthModule]
+    AngularFireDatabaseModule,
+     AngularFireAuthModule,]
 })
 export class SharedModule { }

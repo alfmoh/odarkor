@@ -26,15 +26,15 @@
           <div class="col">
             <div class="form-group">
               <label for="dateOfBirth">Date of birth</label>
-              <my-date-picker name="datePicker" readonly [options]="birthDateOptions"
-              formControlName="datePicker"></my-date-picker>
+              <my-date-picker name="birthDate" readonly [options]="birthDateOptions"
+              formControlName="birthDate"></my-date-picker>
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="dateOfDeath">Died</label>
-              <my-date-picker name="datePicker" [options]="deathDateOptions"
-              formControlName="datePicker"></my-date-picker>              
+              <my-date-picker name="deathDate" [options]="deathDateOptions"
+              formControlName="deathDate"></my-date-picker>              
             </div>
           </div>
         </div>
@@ -48,7 +48,11 @@
       </div>
       <div class="form-group">
         <label for="achievementDetails">Achievement Details</label>
-        <div formControlName="achievementDetails" [froalaEditor]></div>
+        <simple-tiny
+        [elementId]="'my-editor-id'"
+        (onEditorKeyup)="keyupHandlerFunction($event)"
+        >
+      </simple-tiny>
       </div>
       <div *ngIf="achievementDetails.touched && achievementDetails.invalid">
         <div class="error-message">Achievement details are required.</div>

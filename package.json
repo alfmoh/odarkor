@@ -22,7 +22,6 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
-    "angular-froala-wysiwyg": "^2.7.0",
     "angularfire2": "^4.0.0-rc.1",
     "bootstrap": "^4.0.0-beta",
     "core-js": "^2.4.1",
@@ -30,6 +29,7 @@
     "font-awesome": "^4.7.0",
     "mydatepicker": "^2.0.32",
     "rxjs": "^5.4.2",
+    "tinymce": "^4.7.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

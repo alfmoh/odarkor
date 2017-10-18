@@ -16,6 +16,7 @@ form: FormGroup;
 user;
 birthDateOptions;
 deathDateOptions;
+textValue;
 
   constructor(private postsService: PostsService,
     private userService: UserService,
@@ -28,7 +29,8 @@ deathDateOptions;
       dateOfDeath: [""],
       knownFor: ["", Validators.required],
       achievementDetails: ["", Validators.required],
-      datePicker: [null, Validators.required]
+      birthDate: [null, Validators.required],
+      deathDate: [null, Validators.required]
     })
     this.userService.getUser().subscribe(user=>this.user = user);
 
@@ -53,9 +55,21 @@ deathDateOptions;
     return this.form.get("achievementDetails");
   }
 
-  submit(input){
-    input.user = this.user.displayName;
-    this.postsService.create(input);
+  keyupHandlerFunction(input){
+    this.textValue = input;
   }
 
+  submit(input){
+    let formattedInput = {
+      achievementDetails: this.textValue,
+      dateOfBirth: input.birthDate.formatted,
+      dateOfDeath : input.deathDate.formatted,
+      country: input.country,
+      user : this.user.displayName,
+      knownFor: input.knownFor,
+      name: input.name
+    }
+    this.postsService.create(formattedInput);
+  }
+  
 }
