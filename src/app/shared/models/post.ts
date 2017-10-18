@@ -1,10 +1,10 @@
 import { User } from './user';
-import { Heroine } from "./heroine";
+import { Hero } from "./hero";
 
 
 export interface Post {
     title: string;
     date: string;
-    hero: Heroine;
+    hero: Hero;
     user: User;
 }

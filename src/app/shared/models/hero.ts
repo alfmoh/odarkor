@@ -1,10 +1,13 @@
 import { Achievement } from './achievement';
 
-export interface Heroine {
+export interface Hero {
     name: string;
     country: string;
     dateOfBirth: string;
     dateOfDeath: string;
-    acheivement: Achievement
+    knownFor: string;
+    // acheivementDetails: Achievement
+    achievementDetails: string;
+    user : any;
 
 }

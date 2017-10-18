@@ -5,24 +5,24 @@
         <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Kwame_Nkrumah_%28JFKWHP-AR6409-A%29.jpg"
           alt="Card image cap">
         <div class="card-body">
-          <h4 class="card-title">{{hero.name | titlecase }}</h4>
-          <p class="card-text">{{hero.knownFor}}</p>
+          <h4 class="card-title">{{hero?.name | titlecase }}</h4>
+          <p class="card-text">{{hero?.knownFor}}</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Country: {{hero.country}}</li>
-          <li class="list-group-item">Born: {{hero.dateOfBirth | date:'longDate'}}</li>
-          <li class="list-group-item">Died: {{hero.dateOfDeath | date : 'longDate'}}</li>          
+          <li class="list-group-item">Country: {{hero?.country}}</li>
+          <li class="list-group-item">Born: {{hero?.dateOfBirth | date:'longDate'}}</li>
+          <li class="list-group-item">Died: {{hero?.dateOfDeath | date : 'longDate'}}</li>
         </ul>
       </div>
     </div>
     <div class="col">
-      <div class="name">{{hero.name | titlecase }}</div>
+      <div class="name">{{hero?.name | titlecase }}</div>
       <br>
-      <div [innerHTML]= "hero.achievementDetails">
-        
+      <div [innerHTML]="hero?.achievementDetails">
+
       </div>
     </div>
   </div>
   <hr/>
-  <p>Submitted by: {{hero.user | uppercase}}</p>
+  <p>Submitted by: {{hero?.user | uppercase}}</p>
 </div>
