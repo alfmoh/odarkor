@@ -5,7 +5,7 @@
         <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Kwame_Nkrumah_%28JFKWHP-AR6409-A%29.jpg"
           alt="Card image cap">
         <div class="card-body">
-          <h4 class="card-title">{{hero.name}}</h4>
+          <h4 class="card-title">{{hero.name | titlecase }}</h4>
           <p class="card-text">{{hero.knownFor}}</p>
         </div>
         <ul class="list-group list-group-flush">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="col">
-      <div class="name">{{hero.name}}</div>
+      <div class="name">{{hero.name | titlecase }}</div>
       <br>
       <div [innerHTML]= "hero.achievementDetails">
         

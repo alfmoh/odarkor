@@ -1,5 +1,4 @@
 <form [formGroup]="form" (ngSubmit)="submit(form.value)">
-  <!-- <div class="container col-md-4 col-md-offset-4"> -->
   <div class="container ">
     <div class="submitForm">
       <div class="col-md-8 center">
@@ -27,13 +26,15 @@
           <div class="col">
             <div class="form-group">
               <label for="dateOfBirth">Date of birth</label>
-              <input formControlName="dateOfBirth" id="dateOfBirth" class="form-control" type="date">
+              <my-date-picker name="datePicker" readonly [options]="birthDateOptions"
+              formControlName="datePicker"></my-date-picker>
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="dateOfDeath">Died</label>
-              <input formControlName="dateOfDeath" id="dateOfDeath" class="form-control" type="date">
+              <my-date-picker name="datePicker" [options]="deathDateOptions"
+              formControlName="datePicker"></my-date-picker>              
             </div>
           </div>
         </div>
@@ -47,7 +48,6 @@
       </div>
       <div class="form-group">
         <label for="achievementDetails">Achievement Details</label>
-        <!-- <textarea formControlName="achievementDetails" class="form-control" id="achievementDetails" rows="3"></textarea> -->
         <div formControlName="achievementDetails" [froalaEditor]></div>
       </div>
       <div *ngIf="achievementDetails.touched && achievementDetails.invalid">

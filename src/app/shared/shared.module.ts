@@ -14,6 +14,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
+    MyDatePickerModule,
     RouterModule.forChild([
       {path: "article-form", component: HeroFormComponent, canActivate: [AuthGuardService]}
     ]),

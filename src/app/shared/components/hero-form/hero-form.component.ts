@@ -2,6 +2,8 @@ import { UserService } from './../../services/user.service';
 import { PostsService } from './../../services/posts.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import {IMyDpOptions, IMyDateModel} from 'mydatepicker';
+import { TimeOptions } from '../../../others/utilities/time-options';
 
 @Component({
   selector: 'hero-form',
@@ -12,6 +14,9 @@ export class HeroFormComponent implements OnInit {
 
 form: FormGroup;
 user;
+timeOptions = new TimeOptions();
+birthDateOptions = this.timeOptions.birthDateOptions;
+deathDateOptions = this.timeOptions.deathDateOptions;
 
   constructor(private postsService: PostsService,
     private userService: UserService,
@@ -23,6 +28,7 @@ user;
       dateOfDeath: [""],
       knownFor: ["", Validators.required],
       achievementDetails: ["", Validators.required],
+      datePicker: [null, Validators.required]
     })
     this.userService.getUser().subscribe(user=>this.user = user);
    }

@@ -28,6 +28,7 @@
     "core-js": "^2.4.1",
     "firebase": "^4.2.0",
     "font-awesome": "^4.7.0",
+    "mydatepicker": "^2.0.32",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },
