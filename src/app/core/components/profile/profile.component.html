@@ -18,7 +18,7 @@
     <div class="col">
       <div class="name">{{hero?.name | titlecase }}</div>
       <br>
-      <div [innerHTML]="hero?.achievementDetails | sanitizeHtml ">
+      <div [innerHTML]="hero?.achievementDetails | sanitizeStyle ">
 
       </div>
     </div>

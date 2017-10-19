@@ -1,4 +1,4 @@
-import { SanitizeHtmlPipe } from './sanitizehtml.pipe';
+import { SanitizeStylePipe } from './sanitizestyle.pipe';
 
 describe('SanitizeHtmlPipe', () => {
   it('create an instance', () => {
