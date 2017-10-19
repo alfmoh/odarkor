@@ -16,6 +16,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MyDatePickerModule } from 'mydatepicker';
+import { SanitizeHtmlPipe } from './pipes/sanitizehtml.pipe';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { MyDatePickerModule } from 'mydatepicker';
     ])
   ],
   declarations: [
-    HeroFormComponent
+    HeroFormComponent,
+    SanitizeHtmlPipe
   ],
   providers: [
     {provide: ErrorHandler, useClass: AppErrorHandler}, 
@@ -46,6 +48,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     HeroFormComponent, 
     NgbModule.forRoot().ngModule,
     AngularFireDatabaseModule,
-     AngularFireAuthModule,]
+     AngularFireAuthModule,
+    SanitizeHtmlPipe]
 })
 export class SharedModule { }
