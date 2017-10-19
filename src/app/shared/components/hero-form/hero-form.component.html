@@ -15,7 +15,11 @@
           <div class="col">
             <div class="form-group">
               <label for="country">Сountry</label>
-              <input formControlName="country" id="country" class="form-control" type="text">
+              <!-- <input formControlName="country" id="country" class="form-control" type="text"> -->
+              <select formControlName="country" class="form-control">
+                <option value=""></option>
+                <option *ngFor="let country of countries" >{{country.name}}</option>
+              </select>
               <div *ngIf="country.touched && country.invalid">
                 <div class="error-message">Country is required.</div>
               </div>

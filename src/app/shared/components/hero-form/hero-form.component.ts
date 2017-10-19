@@ -4,6 +4,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {IMyDpOptions, IMyDateModel} from 'mydatepicker';
 import { TimeOptions } from '../../../others/utilities/time-options';
+import * as countries from "../../../others/utilities/countries.json";
 
 @Component({
   selector: 'hero-form',
@@ -17,6 +18,7 @@ user;
 birthDateOptions;
 deathDateOptions;
 textValue;
+countries:any = countries;
 
   constructor(private postsService: PostsService,
     private userService: UserService,
