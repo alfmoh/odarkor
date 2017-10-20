@@ -1,7 +1,9 @@
+import { IMyDate } from 'mydatepicker/dist';
 import { IMyDpOptions } from "mydatepicker";
 
 export class TimeOptions {
     currentTime = new Date()
+    public defaultDate = { date: { year: 1000, month: 1, day: 1 } }
 
     public birthDateOptions: IMyDpOptions = {
         editableDateField: false,

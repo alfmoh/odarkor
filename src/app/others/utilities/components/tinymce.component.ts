@@ -1,17 +1,21 @@
-import {
-  Component,
-  OnDestroy,
-  AfterViewInit,
-  EventEmitter,
-  Input,
-  Output
-} from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms/src/directives';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AfterViewInit, Component, EventEmitter, forwardRef, Input, OnDestroy, Output } from '@angular/core';
+
+const contentAccessor = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(()=>TinyMceComponent),
+  multi: true
+};
 
 @Component({
   selector: 'simple-tiny',
-  template: `<textarea id="{{elementId}}"></textarea>`
+  template: `<textarea id="{{elementId}}"></textarea>`,
+  providers: [contentAccessor]
 })
-export class TinyMceComponent implements AfterViewInit, OnDestroy {
+export class TinyMceComponent implements AfterViewInit, OnDestroy, ControlValueAccessor {
+  onModelChange: any;
+  onTouch: any;
   @Input() elementId: String;
   @Output() onEditorKeyup = new EventEmitter<any>();
 
@@ -30,6 +34,18 @@ export class TinyMceComponent implements AfterViewInit, OnDestroy {
         });
       },
     });
+  }
+
+  registerOnTouched(fn){
+    this.onTouch = fn;
+  }
+
+  registerOnChange(fn){
+    this.onModelChange = fn;
+  }
+
+  writeValue(value){
+    this.editor = value;
   }
 
   ngOnDestroy() {

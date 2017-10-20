@@ -14,11 +14,10 @@
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="country">Сountry</label>
-              <!-- <input formControlName="country" id="country" class="form-control" type="text"> -->
+              <label for="country">Сountry</label>              
               <select formControlName="country" class="form-control">
                 <option value=""></option>
-                <option *ngFor="let country of countries" >{{country.name}}</option>
+                <option *ngFor="let country of countries">{{country.name}}</option>
               </select>
               <div *ngIf="country.touched && country.invalid">
                 <div class="error-message">Country is required.</div>
@@ -29,16 +28,34 @@
         <div class="row">
           <div class="col">
             <div class="form-group">
-              <label for="dateOfBirth">Date of birth</label>
-              <my-date-picker name="birthDate" readonly [options]="birthDateOptions"
+              <label for="birthDate">Date of birth</label>
+              <i class="fa fa-question-circle-o" 
+              aria-hidden="true" 
+              placement="right" 
+              ngbTooltip="If unknown, set to '01/01/1000'.  
+              To show calender from current year, click 'x'"></i>
+              <my-date-picker 
+              [options]="birthDateOptions" 
+              id="birthDate" name="birthDate" 
               formControlName="birthDate"></my-date-picker>
+              <div *ngIf="birthDate.touched && birthDate.invalid">
+                <div class="error-message">Birth date is required.</div>
+              </div>
             </div>
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="dateOfDeath">Died</label>
-              <my-date-picker name="deathDate" [options]="deathDateOptions"
-              formControlName="deathDate"></my-date-picker>              
+              <label for="deathDate">Died</label>
+              <i class="fa fa-question-circle-o"
+               aria-hidden="true" placement="right" 
+               ngbTooltip="If unknown, set to '01/01/1000'"></i>
+              <my-date-picker 
+              id="deathDate" name="deathDate" 
+              [options]="deathDateOptions" 
+              formControlName="deathDate"></my-date-picker>
+              <div *ngIf="deathDate.touched && deathDate.invalid">
+                <div class="error-message">Death date is required.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -52,16 +69,16 @@
       </div>
       <div class="form-group">
         <label for="achievementDetails">Achievement Details</label>
-        <simple-tiny
-        [elementId]="'my-editor-id'"
-        (onEditorKeyup)="keyupHandlerFunction($event)"
-        >
-      </simple-tiny>
+        <simple-tiny 
+        [elementId]="'my-editor-id'" 
+        (onEditorKeyup)="keyupHandlerFunction($event)" 
+        formControlName="achievementDetails">
+        </simple-tiny>
       </div>
-      <div *ngIf="achievementDetails.touched && achievementDetails.invalid">
+      <div *ngIf="achievementDetails.invalid">
         <div class="error-message">Achievement details are required.</div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>
