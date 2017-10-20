@@ -1,6 +1,6 @@
 .all {
   position: relative;
-  padding-left: 8%;
+  padding-left: 8.5%;
 }
 
 .module {
@@ -33,6 +33,7 @@
 
 .heading {
   text-align: center;
+  /* padding-right: 5px; */
 }
 
 .top-space {
@@ -44,7 +45,7 @@
 }
 
 .country {
-  padding-left: 12px;
+  padding-left: 5px;
   font-family: serif;
   font-weight: 100;
   font-size: 10px;
