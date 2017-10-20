@@ -1,7 +1,10 @@
 <div class="container all">
+  <div class="top-space"></div>
   <div class="module" *ngFor="let h of heroes$ | async ">
-    <a [routerLink]="['/profile/',h.$key]">
-      <h2 class="heading">{{h.name}}</h2>
+    <a class="routing" [routerLink]="['/profile/',h.$key]">
+      <h2 class="heading">{{h.name}}
+        <sup class="country">GH</sup>
+      </h2>
     </a>
     <div class="desc">
       <p>{{h.knownFor}}</p>
