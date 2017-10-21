@@ -3,6 +3,18 @@
   padding-left: 8.5%;
 }
 
+/* @media screen and (orientation: landscape){
+  .all {
+    padding-left: 24%;
+  }
+} */
+
+/* @media (max-width: 767px){
+  .all {
+    padding-left: 9.5%;
+  }
+} */
+
 .module {
   width: 300px;
   height: 160px;

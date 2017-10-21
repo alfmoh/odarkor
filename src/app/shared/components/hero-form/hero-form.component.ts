@@ -68,16 +68,22 @@ export class HeroFormComponent implements OnInit {
 
 
   submit(input) {
+
+    let countryAndCode = input.country as string;
+    let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
+    let getCountry = countryAndCode.substr(countryAndCode.indexOf(",") + 1, countryAndCode.length);
+
     let formattedInput = {
       achievementDetails: this.textValue,
       dateOfBirth: (!input.birthDate.formatted) ? "01/01/1000" : input.birthDate.formatted,
       dateOfDeath: (!input.deathDate.formatted) ? "01/01/1000" : input.deathDate.formatted,
-      country: input.country,
+      country: getCountry,
+      code: getCode,
       user: this.user.displayName,
       knownFor: input.knownFor,
       name: input.name
     }
-    this.postsService.create(formattedInput);
+     this.postsService.create(formattedInput);
   }
 
 }

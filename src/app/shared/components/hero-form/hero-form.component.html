@@ -17,7 +17,7 @@
               <label for="country">Сountry</label>              
               <select formControlName="country" class="form-control">
                 <option value=""></option>
-                <option *ngFor="let country of countries">{{country.name}}</option>
+                <option *ngFor="let country of countries" [value]="[country.code,country.name]" >{{country.name}}</option>
               </select>
               <div *ngIf="country.touched && country.invalid">
                 <div class="error-message">Country is required.</div>

@@ -3,7 +3,7 @@
   <div class="module" *ngFor="let h of heroes$ | async ">
     <a class="routing" [routerLink]="['/profile/',h.$key]">
       <h2 class="heading">{{h.name}}
-        <sup class="country">GH</sup>
+        <sup class="country">{{h.code}}</sup>
       </h2>
     </a>
     <div class="desc">
