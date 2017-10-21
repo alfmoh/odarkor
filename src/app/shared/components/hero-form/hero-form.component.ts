@@ -1,10 +1,12 @@
+import { Router } from '@angular/router';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from './../../services/user.service';
 import { PostsService } from './../../services/posts.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { IMyOptions, IMyDateModel, IMyDate } from 'mydatepicker';
 import { TimeOptions } from '../../../others/utilities/time-options';
-import * as countries from "../../../others/utilities/countries.json";
+import * as countries from '../../../others/utilities/countries.json';
 
 @Component({
   selector: 'hero-form',
@@ -23,6 +25,8 @@ export class HeroFormComponent implements OnInit {
   constructor(private postsService: PostsService,
     private userService: UserService,
     timeOptions: TimeOptions,
+    private modalService: NgbModal,
+    private router: Router,
     fb: FormBuilder, ) {
     this.form = fb.group({
       name: ["", Validators.required],
@@ -67,7 +71,7 @@ export class HeroFormComponent implements OnInit {
   }
 
 
-  submit(input) {
+  submit(input, content) {
 
     let countryAndCode = input.country as string;
     let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
@@ -83,7 +87,17 @@ export class HeroFormComponent implements OnInit {
       knownFor: input.knownFor,
       name: input.name
     }
-     this.postsService.create(formattedInput);
+    this.postsService.create(formattedInput);
+    //console.log(formattedInput);
+    this.open(content);
+  }
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.router.navigate(["/"]);
+    }, (reason) => {
+      this.router.navigate(["/"]);
+    });
   }
 
 }

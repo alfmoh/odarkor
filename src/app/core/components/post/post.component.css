@@ -15,6 +15,12 @@
   }
 } */
 
+@media (max-width: 768px) and (max-width: 980px){
+  .all {
+    padding-left: 17.5%;
+  }
+}
+
 .module {
   width: 300px;
   height: 160px;
