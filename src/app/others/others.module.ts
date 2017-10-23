@@ -7,16 +7,28 @@ import { FaqComponent } from './components/faq/faq.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { TinyMceComponent } from './utilities/components/tinymce.component';
 import { CloseMenuDirective } from './directives/closemenu.directive';
+import { FileValueAccessor } from './directives/filevalueaccessor.directive';
+import { FileValidator } from './directives/filevalidator.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      {path: "faq", component: FaqComponent}
+      { path: "faq", component: FaqComponent }
     ])
   ],
-  declarations: [FaqComponent, NotfoundComponent, TinyMceComponent, CloseMenuDirective],
-  exports: [TinyMceComponent, CloseMenuDirective]
+  declarations: [
+    FaqComponent,
+    NotfoundComponent,
+    TinyMceComponent,
+    CloseMenuDirective,
+    FileValueAccessor,
+    FileValidator],
+  exports: [
+    TinyMceComponent, 
+    CloseMenuDirective, 
+    FileValueAccessor,
+    FileValidator]
 })
 export class OthersModule { }

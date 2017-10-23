@@ -1,3 +1,4 @@
+import { FileValidator } from '../../../others/directives/filevalidator.directive';
 import { UploadService } from '../../services/upload.service';
 import { Upload } from '../../services/upload';
 import { Router } from '@angular/router';
@@ -39,6 +40,7 @@ export class HeroFormComponent implements OnInit {
       country: ["", Validators.required],
       knownFor: ["", Validators.required],
       achievementDetails: [""],
+      image: ["",[FileValidator.validate]],
       birthDate: [timeOptions.defaultDate, Validators.required],
       deathDate: [timeOptions.defaultDate, Validators.required]
     })
@@ -71,6 +73,9 @@ export class HeroFormComponent implements OnInit {
   get deathDate() {
     return this.form.get("deathDate");
   }
+  get image() {
+    return this.form.get("image");
+  }
 
   keyupHandlerFunction(input) {
     this.textValue = input;
@@ -78,14 +83,15 @@ export class HeroFormComponent implements OnInit {
 
   detectFiles(event){
     this.selectedFiles = event.target.files;
+    if (this.image.value) {
+      return !this.image.invalid;
+    }
   }
 
   upload(article,content){
     let file = this.selectedFiles.item(0);
     this.currentUpload = new Upload(file);
-    // this.upService.pushUpload(this.currentUpload);
     this.postsService.pushUploadWithImgUrl(this.currentUpload,article,content);
-    // this.url = this.currentUpload.url;
   }
 
 

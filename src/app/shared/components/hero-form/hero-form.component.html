@@ -82,17 +82,18 @@
             <div class="error-message">Known attributes are required.</div>
           </div>
         </div>
-      </div>
-
-      <div *ngIf="currentUpload">
-        <div class="progress">
-          <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+        <div *ngIf="currentUpload">
+            <div class="progress">
+              <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+            </div>
+            Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
         </div>
-        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+        <label for="heroImg"> Upload Hero Image </label>
+            <input type="file" id="heroImg" class="form-control" formControlName="image" (change)="detectFiles($event)">
+            <div *ngIf="image.touched && image.invalid" >
+              <div class="error-message" >Image is required</div>
+            </div>
       </div>
-          <label>
-             <input type="file" (change)="detectFiles($event)">
-          </label>
           
       <div class="form-group">
         <label for="achievementDetails">Achievement Details</label>
@@ -105,9 +106,6 @@
       <div *ngIf="achievementDetails.invalid">
         <div class="error-message">Achievement details are required.</div>
       </div>
-
-      
-      <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
 
       <button [disabled]="!selectedFiles || form.invalid" type="submit" class="btn btn-primary">Submit</button>
     </div>
