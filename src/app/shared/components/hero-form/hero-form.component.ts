@@ -1,3 +1,5 @@
+import { UploadService } from '../../services/upload.service';
+import { Upload } from '../../services/upload';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from './../../services/user.service';
@@ -22,11 +24,15 @@ export class HeroFormComponent implements OnInit {
   textValue;
   countries: any = countries;
 
+  currentUpload: Upload;
+  selectedFiles: FileList;
+
   constructor(private postsService: PostsService,
     private userService: UserService,
     timeOptions: TimeOptions,
     private modalService: NgbModal,
     private router: Router,
+    private upService: UploadService,
     fb: FormBuilder, ) {
     this.form = fb.group({
       name: ["", Validators.required],
@@ -70,6 +76,18 @@ export class HeroFormComponent implements OnInit {
     this.textValue = input;
   }
 
+  detectFiles(event){
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(article,content){
+    let file = this.selectedFiles.item(0);
+    this.currentUpload = new Upload(file);
+    // this.upService.pushUpload(this.currentUpload);
+    this.postsService.pushUploadWithImgUrl(this.currentUpload,article,content);
+    // this.url = this.currentUpload.url;
+  }
+
 
   submit(input, content) {
 
@@ -87,17 +105,11 @@ export class HeroFormComponent implements OnInit {
       knownFor: input.knownFor,
       name: input.name
     }
-    this.postsService.create(formattedInput);
-    //console.log(formattedInput);
-    this.open(content);
-  }
+    //this.postsService.create(formattedInput);  
+    this.upload(formattedInput,content);  
 
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.router.navigate(["/"]);
-    }, (reason) => {
-      this.router.navigate(["/"]);
-    });
+    //console.log(formattedInput); 
+    //this.open(content);
   }
 
 }

@@ -83,6 +83,17 @@
           </div>
         </div>
       </div>
+
+      <div *ngIf="currentUpload">
+        <div class="progress">
+          <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+        </div>
+        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+      </div>
+          <label>
+             <input type="file" (change)="detectFiles($event)">
+          </label>
+          
       <div class="form-group">
         <label for="achievementDetails">Achievement Details</label>
         <simple-tiny 
@@ -98,7 +109,7 @@
       
       <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
 
-      <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
+      <button [disabled]="!selectedFiles || form.invalid" type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>

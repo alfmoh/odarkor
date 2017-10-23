@@ -1,3 +1,4 @@
+import { UploadService } from './services/upload.service';
 import { OthersModule } from './../others/others.module';
 import { TimeOptions } from './../others/utilities/time-options';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -43,6 +44,7 @@ import { SanitizeHtmlPipe } from './pipes/sanitizehtml.pipe';
     AuthGuardService,
     HeroService,
     TimeOptions,
+    UploadService,
     UserService],
   exports: [
     HeroFormComponent, 
