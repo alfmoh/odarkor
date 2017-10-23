@@ -9,6 +9,7 @@ import { TinyMceComponent } from './utilities/components/tinymce.component';
 import { CloseMenuDirective } from './directives/closemenu.directive';
 import { FileValueAccessor } from './directives/filevalueaccessor.directive';
 import { FileValidator } from './directives/filevalidator.directive';
+import { FileTypeValidator } from './directives/filetypevalidator.directive';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { FileValidator } from './directives/filevalidator.directive';
     TinyMceComponent,
     CloseMenuDirective,
     FileValueAccessor,
-    FileValidator],
+    FileValidator,
+    FileTypeValidator],
   exports: [
     TinyMceComponent, 
     CloseMenuDirective, 

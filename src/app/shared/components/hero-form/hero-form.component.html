@@ -89,7 +89,12 @@
             Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
         </div>
         <label for="heroImg"> Upload Hero Image </label>
-            <input type="file" id="heroImg" class="form-control" formControlName="image" (change)="detectFiles($event)">
+            <input type="file"
+             id="heroImg"
+             accept="image/*" 
+             class="form-control" 
+             formControlName="image" 
+             (change)="detectFiles($event)">
             <div *ngIf="image.touched && image.invalid" >
               <div class="error-message" >Image is required</div>
             </div>

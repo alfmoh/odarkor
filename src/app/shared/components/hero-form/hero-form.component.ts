@@ -1,3 +1,4 @@
+import { FileTypeValidator } from '../../../others/directives/filetypevalidator.directive';
 import { FileValidator } from '../../../others/directives/filevalidator.directive';
 import { UploadService } from '../../services/upload.service';
 import { Upload } from '../../services/upload';
@@ -40,7 +41,7 @@ export class HeroFormComponent implements OnInit {
       country: ["", Validators.required],
       knownFor: ["", Validators.required],
       achievementDetails: [""],
-      image: ["",[FileValidator.validate]],
+      image: ["",[FileValidator.validate,FileTypeValidator.validate]],
       birthDate: [timeOptions.defaultDate, Validators.required],
       deathDate: [timeOptions.defaultDate, Validators.required]
     })
@@ -83,9 +84,6 @@ export class HeroFormComponent implements OnInit {
 
   detectFiles(event){
     this.selectedFiles = event.target.files;
-    if (this.image.value) {
-      return !this.image.invalid;
-    }
   }
 
   upload(article,content){
