@@ -14,7 +14,7 @@ export class FileTypeValidator implements Validator {
   static validate(c: FormControl): { [key: string]: any } {
     if (c.value) {
       if (c.value[0]) {
-        console.log(c.value[0].size/1024/1024);
+        // console.log(c.value[0].size/1024/1024);
         return FileTypeValidator.checkExtension(c);
       };
     }

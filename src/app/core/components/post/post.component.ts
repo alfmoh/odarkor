@@ -7,15 +7,11 @@ import 'rxjs/add/operator/map';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit {
-heroes$;
+export class PostComponent {
+  submissions$;
 
-  constructor(private heroService: HeroService) { 
-    this.heroes$= this.heroService.getAll();   
-  }
-
-  ngOnInit() {
-    
+  constructor(private heroService: HeroService) {
+    this.submissions$ = this.heroService.getAll();
   }
 
 }

@@ -1,13 +1,23 @@
-import { Achievement } from './achievement';
+import { SubmissionDto } from './submission';
 
-export interface Hero {
+export class Hero {
     name: string;
     country: string;
-    dateOfBirth: string;
-    dateOfDeath: string;
+    code: string;
     knownFor: string;
-    // acheivementDetails: Achievement
     achievementDetails: string;
-    user : any;
+    birthDate: string;
+    deathDate: string;
+    imageUrl: string;
 
+    constructor(input: SubmissionDto) {
+        this.name = input.name;
+        this.country = input.country;
+        this.code = input.code;
+        this.knownFor = input.knownFor;
+        this.birthDate = input.birthDate;
+        this.deathDate = input.deathDate;
+        this.achievementDetails = input.achievementDetails;
+        this.imageUrl = input.imageUrl;
+    }
 }

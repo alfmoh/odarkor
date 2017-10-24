@@ -7,11 +7,11 @@ export class HeroService {
   constructor(private db: AngularFireDatabase) { }
 
   getAll() {
-    return this.db.list("/heroes");
+    return this.db.list("/submissions");
   }
 
-  get(heroId){
-    return this.db.object("/heroes/" + heroId);
+  get(heroId) {
+    return this.db.object("/submissions/" + heroId + "/hero");
   }
 
 }

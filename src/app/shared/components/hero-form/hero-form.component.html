@@ -1,5 +1,5 @@
 
-<ng-template #content let-c="close" let-d="dismiss">
+<ng-template #modalBoxContent let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title btn-outline-success">Success!</h4>
     <button type="button" class="close" aria-label="Close" (click)="d()">
@@ -14,7 +14,7 @@
   </div>
 </ng-template>
 
-<form [formGroup]="form" (ngSubmit)="submit(form.value,content)">
+<form [formGroup]="form" (ngSubmit)="submit(form.value,modalBoxContent)">
   <div class="container ">
     <div class="submitForm">
       <div class="col-md-8 center">
@@ -23,7 +23,7 @@
             <div class="form-group">
               <label for="name">Name</label>
               <input formControlName="name" id="name" class="form-control" type="text">
-              <div *ngIf="name.touched && name.invalid">
+              <div *ngIf="form.get('name').touched && form.get('name').invalid">
                 <div class="error-message">Name is required.</div>
               </div>
             </div>
@@ -35,7 +35,7 @@
                 <option value=""></option>
                 <option *ngFor="let country of countries" [value]="[country.code,country.name]" >{{country.name}}</option>
               </select>
-              <div *ngIf="country.touched && country.invalid">
+              <div *ngIf="form.get('country').touched &&form.get('country').invalid">
                 <div class="error-message">Country is required.</div>
               </div>
             </div>
@@ -54,7 +54,7 @@
               [options]="birthDateOptions" 
               id="birthDate" name="birthDate" 
               formControlName="birthDate"></my-date-picker>
-              <div *ngIf="birthDate.touched && birthDate.invalid">
+              <div *ngIf="form.get('birthDate').touched && form.get('birthDate').invalid">
                 <div class="error-message">Birth date is required.</div>
               </div>
             </div>
@@ -69,7 +69,7 @@
               id="deathDate" name="deathDate" 
               [options]="deathDateOptions" 
               formControlName="deathDate"></my-date-picker>
-              <div *ngIf="deathDate.touched && deathDate.invalid">
+              <div *ngIf="form.get('deathDate').touched && form.get('deathDate').invalid">
                 <div class="error-message">Death date is required.</div>
               </div>
             </div>
@@ -78,7 +78,7 @@
         <div class="form-group">
           <label for="knownFor">Known For</label>
           <input formControlName="knownFor" id="knownFor" class="form-control" type="text">
-          <div *ngIf="knownFor.touched && knownFor.invalid">
+          <div *ngIf="form.get('knownFor').touched && form.get('knownFor').invalid">
             <div class="error-message">Known attributes are required.</div>
           </div>
         </div>
@@ -86,17 +86,21 @@
             <div class="progress">
               <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
             </div>
-            Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+            Progress: {{currentUpload?.image[0]?.name}} | {{currentUpload?.progress}}% Complete
         </div>
         <label for="heroImg"> Upload Hero Image </label>
+        <i class="fa fa-question-circle-o" 
+              aria-hidden="true" 
+              placement="right" 
+              ngbTooltip="Image should be of the format: jpg, jpeg or png"></i>
             <input type="file"
              id="heroImg"
              accept="image/*" 
              class="form-control" 
              formControlName="image" 
              (change)="detectFiles($event)">
-            <div *ngIf="image.touched && image.invalid" >
-              <div class="error-message" >Image is required</div>
+            <div *ngIf="form.get('image').touched && form.get('image').invalid" >
+              <div class="error-message" >Valid image is required.</div>
             </div>
       </div>
           
@@ -108,7 +112,7 @@
         formControlName="achievementDetails">
         </simple-tiny>
       </div>
-      <div *ngIf="achievementDetails.invalid">
+      <div *ngIf="form.get('achievementDetails').invalid">
         <div class="error-message">Achievement details are required.</div>
       </div>
 
