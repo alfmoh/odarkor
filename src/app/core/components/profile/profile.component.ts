@@ -23,7 +23,7 @@ export class ProfileComponent {
   ) {
     this.id = this.route.snapshot.paramMap.get("id");
     if (this.id) this.heroService.get(this.id).take(1).subscribe(hero => this.hero = hero);
-    this.user = postService.user;
+    this.user = postService.getSubmittedByUser(this.id);
   }
 
 }

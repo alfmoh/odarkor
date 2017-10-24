@@ -26,6 +26,10 @@ export class PostsService {
     return this.db.list("/submissions").push(submission);
   }
 
+  getSubmittedByUser(heroId) {
+    return this.db.object("/submissions/" + heroId + "/submittedBy");
+  }
+
   pushUploadWithImgUrl(submissionDto: SubmissionDto, modalBoxContent) {
     const storageRef = firebase.storage().ref();
     this.uploadTask = storageRef.child(`${this.basePath}/${submissionDto.image[0].name + " - " + Date.now()}`).put(submissionDto.image[0]);
