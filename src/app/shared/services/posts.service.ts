@@ -1,10 +1,11 @@
+import { Hero } from '../models/hero';
 import { UserService } from './user.service';
 import { SubmissionDto, Submission } from './../models/submission';
 import { Router } from '@angular/router';
 import { Upload } from './upload';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
-import * as firebase from "firebase";
+import * as firebase from 'firebase';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable()
@@ -17,8 +18,12 @@ export class PostsService {
   constructor(
     private modalService: NgbModal,
     private router: Router,
+    private db: AngularFireDatabase,
+    private submission: Submission,
+    private submissionDto: SubmissionDto,
+    private hero: Hero,
     userService: UserService,
-    private db: AngularFireDatabase) {
+    ) {
     userService.getUser().subscribe(user => this.user = user);
   }
 
@@ -44,9 +49,19 @@ export class PostsService {
       },
       () => {
         submissionDto.imageUrl = this.uploadTask.snapshot.downloadURL;
-        let submission = new Submission(submissionDto);
-        submission.submittedBy = this.user.displayName;
-        this.create(submission);
+
+        this.submission.hero = {
+          name : submissionDto.name,
+          country: submissionDto.country,
+          code: submissionDto.code,
+          knownFor: submissionDto.knownFor,
+          achievementDetails: submissionDto.achievementDetails,
+          birthDate: submissionDto.birthDate,
+          deathDate: submissionDto.deathDate,
+          imageUrl: submissionDto.imageUrl
+        }
+        this.submission.submittedBy = this.user.displayName;
+        this.create(this.submission);
         this.open(modalBoxContent);
         return undefined;
       })

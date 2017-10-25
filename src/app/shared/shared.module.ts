@@ -17,6 +17,9 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MyDatePickerModule } from 'mydatepicker';
 import { SanitizeHtmlPipe } from './pipes/sanitizehtml.pipe';
+import { Submission } from './models/submission';
+import { SubmissionDto } from './models/submission';
+import { Hero } from './models/hero';
 
 @NgModule({
   imports: [
@@ -29,7 +32,7 @@ import { SanitizeHtmlPipe } from './pipes/sanitizehtml.pipe';
     NgbModule.forRoot(),
     MyDatePickerModule,
     RouterModule.forChild([
-      {path: "article-form", component: HeroFormComponent, canActivate: [AuthGuardService]}
+      { path: "article-form", component: HeroFormComponent, canActivate: [AuthGuardService] }
     ])
   ],
   declarations: [
@@ -37,18 +40,21 @@ import { SanitizeHtmlPipe } from './pipes/sanitizehtml.pipe';
     SanitizeHtmlPipe
   ],
   providers: [
-    {provide: ErrorHandler, useClass: AppErrorHandler}, 
+    { provide: ErrorHandler, useClass: AppErrorHandler },
     PostsService,
-    AuthService, 
+    AuthService,
     AuthGuardService,
     HeroService,
     TimeOptions,
+    SubmissionDto,
+    Submission,
+    Hero,
     UserService],
   exports: [
-    HeroFormComponent, 
+    HeroFormComponent,
     NgbModule.forRoot().ngModule,
     AngularFireDatabaseModule,
-     AngularFireAuthModule,
+    AngularFireAuthModule,
     SanitizeHtmlPipe]
 })
 export class SharedModule { }

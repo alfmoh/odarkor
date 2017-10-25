@@ -32,6 +32,7 @@ export class HeroFormComponent {
     private userService: UserService,
     private modalService: NgbModal,
     private router: Router,
+    private submissionDto: SubmissionDto,
     fb: FormBuilder,
     timeOptions: TimeOptions,
   ) 
@@ -66,9 +67,23 @@ export class HeroFormComponent {
   }
 
 
-  submit(input, modalBoxContent) {
-    let submission = new SubmissionDto(input, this.achievementText);
-    this.upload(submission, modalBoxContent);
+  submit(input, modalBoxContent) { 
+
+    let countryAndCode =  input.country as string;
+    let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
+    let getCountry = countryAndCode.substr(countryAndCode.indexOf(",") + 1, countryAndCode.length);
+
+    
+    this.submissionDto.achievementDetails = this.achievementText;
+    this.submissionDto.birthDate = (!input.birthDate.formatted) ? "01/01/1000" : input.birthDate.formatted;
+    this.submissionDto.deathDate = (!input.deathDate.formatted) ? "01/01/1000" : input.deathDate.formatted;
+    this.submissionDto.country = getCountry;
+    this.submissionDto.code = getCode;
+    this.submissionDto.image = input.image;
+    this.submissionDto.knownFor = input.knownFor;
+    this.submissionDto.name = input.name;
+
+      this.upload(this.submissionDto, modalBoxContent);
   }
 
 }
