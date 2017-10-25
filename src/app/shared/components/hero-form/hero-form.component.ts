@@ -10,6 +10,8 @@ import { IMyOptions, IMyDateModel, IMyDate } from 'mydatepicker';
 import { TimeOptions } from '../../../others/utilities/time-options';
 import * as countries from '../../../others/utilities/countries.json';
 import { SubmissionDto } from '../../models/submission';
+import 'automapper-ts/dist/automapper';
+import { } from 'automapper-ts';
 
 @Component({
   selector: 'hero-form',
@@ -35,8 +37,7 @@ export class HeroFormComponent {
     private submissionDto: SubmissionDto,
     fb: FormBuilder,
     timeOptions: TimeOptions,
-  ) 
-    {
+  ) {
     this.form = fb.group({
       name: ["", Validators.required],
       country: ["", Validators.required],
@@ -67,23 +68,25 @@ export class HeroFormComponent {
   }
 
 
-  submit(input, modalBoxContent) { 
+  submit(input, modalBoxContent) {
 
-    let countryAndCode =  input.country as string;
+    let countryAndCode = input.country as string;
     let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
     let getCountry = countryAndCode.substr(countryAndCode.indexOf(",") + 1, countryAndCode.length);
+    let birthDate = (!input.birthDate.formatted) ? "01/01/1000" : input.birthDate.formatted;
+    let deathDate = (!input.deathDate.formatted) ? "01/01/1000" : input.deathDate.formatted;
 
-    
-    this.submissionDto.achievementDetails = this.achievementText;
-    this.submissionDto.birthDate = (!input.birthDate.formatted) ? "01/01/1000" : input.birthDate.formatted;
-    this.submissionDto.deathDate = (!input.deathDate.formatted) ? "01/01/1000" : input.deathDate.formatted;
-    this.submissionDto.country = getCountry;
-    this.submissionDto.code = getCode;
-    this.submissionDto.image = input.image;
-    this.submissionDto.knownFor = input.knownFor;
-    this.submissionDto.name = input.name;
 
-      this.upload(this.submissionDto, modalBoxContent);
+    automapper.createMap("formInput", "submissionDto")
+      .forMember("country", (opts) => { return getCountry })
+      .forMember("code", () => { return getCode })
+      .forMember("achievementDetails", () => { return this.achievementText })
+      .forMember("birthDate", () => { return birthDate })
+      .forMember("deathDate", () => { return deathDate })
+
+    this.submissionDto = automapper.map("formInput", "submissionDto", input);
+
+    this.upload(this.submissionDto, modalBoxContent);
   }
 
 }

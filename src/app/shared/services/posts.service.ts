@@ -7,6 +7,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import 'automapper-ts/dist/automapper';
+import { } from 'automapper-ts';
 
 @Injectable()
 export class PostsService {
@@ -23,7 +25,7 @@ export class PostsService {
     private submissionDto: SubmissionDto,
     private hero: Hero,
     userService: UserService,
-    ) {
+  ) {
     userService.getUser().subscribe(user => this.user = user);
   }
 
@@ -50,17 +52,14 @@ export class PostsService {
       () => {
         submissionDto.imageUrl = this.uploadTask.snapshot.downloadURL;
 
-        this.submission.hero = {
-          name : submissionDto.name,
-          country: submissionDto.country,
-          code: submissionDto.code,
-          knownFor: submissionDto.knownFor,
-          achievementDetails: submissionDto.achievementDetails,
-          birthDate: submissionDto.birthDate,
-          deathDate: submissionDto.deathDate,
-          imageUrl: submissionDto.imageUrl
-        }
         this.submission.submittedBy = this.user.displayName;
+
+        automapper.createMap("submissionDto", "hero")
+          .forMember('image', (opts) => { opts.ignore(); })
+          .forMember("progress", (opts) => { opts.ignore() })
+
+        this.submission.hero = automapper.map("submissionDto", "hero", submissionDto)
+
         this.create(this.submission);
         this.open(modalBoxContent);
         return undefined;
