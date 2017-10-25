@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="card">
-        <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Kwame_Nkrumah_%28JFKWHP-AR6409-A%29.jpg"
+        <img class="card-img-top" [src]="hero?.imageUrl"
           alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">{{hero?.name | titlecase }}</h4>
