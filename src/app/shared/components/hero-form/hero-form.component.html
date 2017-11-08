@@ -84,7 +84,8 @@
         </div>
         <div *ngIf="currentUpload">
             <div class="progress">
-              <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+              <div class="progress-bar progress-bar-animated bg-success" 
+                [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
             </div>
             Progress: {{currentUpload?.image[0]?.name}} | {{currentUpload?.progress}}% Complete
         </div>
@@ -106,16 +107,22 @@
           
       <div class="form-group">
         <label for="achievementDetails">Achievement Details</label>
-        <simple-tiny 
-        [elementId]="'my-editor-id'" 
-        (onEditorKeyup)="keyupHandlerFunction($event)" 
-        formControlName="achievementDetails">
-        </simple-tiny>
+        <quill-editor 
+          (onContentChanged) = "textBoxContentChanged($event)"
+          formControlName ="achievementDetails" 
+          id="achievementDetails"
+          [style]="{'height':'320px'}" >
+        </quill-editor>
       </div>
-      <div *ngIf="form.get('achievementDetails').invalid">
-        <div class="error-message">Achievement details are required.</div>
+      <div *ngIf="form.get('achievementDetails').touched && form.get('achievementDetails').invalid">
+        <div *ngIf="form.get('achievementDetails').hasError('required')">
+          <div class="error-message">Achievement details are required.</div>
+        </div>
+        <!-- <div *ngIf="form.get('achievementDetails').hasError('minlength')">
+          <div class="secondary">A minimum of 700 words are required.</div>
+        </div> -->
       </div>
-
+      
       <button [disabled]="!selectedFiles || form.invalid" type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>

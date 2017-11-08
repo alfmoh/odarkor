@@ -42,7 +42,8 @@ export class HeroFormComponent {
       name: ["", Validators.required],
       country: ["", Validators.required],
       knownFor: ["", Validators.required],
-      achievementDetails: [""],
+      // achievementDetails: ["", [Validators.required, Validators.minLength(700)]],
+      achievementDetails: ["", [Validators.required]],
       image: ["", [FileValidator.validate, FileTypeValidator.validate]],
       birthDate: [timeOptions.defaultDate, Validators.required],
       deathDate: [timeOptions.defaultDate, Validators.required]
@@ -53,8 +54,8 @@ export class HeroFormComponent {
   }
 
 
-  keyupHandlerFunction(input) {
-    this.achievementText = input;
+  textBoxContentChanged(input) {
+    this.achievementText = input.html;
   }
 
   detectFiles(event) {

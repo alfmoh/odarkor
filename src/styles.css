@@ -17,3 +17,7 @@ body {
 .error-message {
     color: red;
 }
+
+.ql-container.ql-snow{
+    background-color: #fff;
+  }

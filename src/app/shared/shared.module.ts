@@ -20,6 +20,7 @@ import { SanitizeHtmlPipe } from './pipes/sanitizehtml.pipe';
 import { Submission } from './models/submission';
 import { SubmissionDto } from './models/submission';
 import { Hero } from './models/hero';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { Hero } from './models/hero';
     OthersModule,
     NgbModule.forRoot(),
     MyDatePickerModule,
+    QuillModule,
     RouterModule.forChild([
       { path: "article-form", component: HeroFormComponent, canActivate: [AuthGuardService] }
     ])
