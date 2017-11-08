@@ -10,6 +10,7 @@ import { CloseMenuDirective } from './directives/closemenu.directive';
 import { FileValueAccessor } from './directives/filevalueaccessor.directive';
 import { FileValidator } from './directives/filevalidator.directive';
 import { FileTypeValidator } from './directives/filetypevalidator.directive';
+import { RoundPipe } from './pipes/round.pipe';
 
 @NgModule({
   imports: [
@@ -26,11 +27,13 @@ import { FileTypeValidator } from './directives/filetypevalidator.directive';
     CloseMenuDirective,
     FileValueAccessor,
     FileValidator,
-    FileTypeValidator],
+    FileTypeValidator,
+    RoundPipe],
   exports: [
     TinyMceComponent, 
     CloseMenuDirective, 
     FileValueAccessor,
-    FileValidator]
+    FileValidator,
+    RoundPipe]
 })
 export class OthersModule { }

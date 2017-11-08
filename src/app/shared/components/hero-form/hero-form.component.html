@@ -85,9 +85,11 @@
         <div *ngIf="currentUpload">
             <div class="progress">
               <div class="progress-bar progress-bar-animated bg-success" 
-                [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+                [ngStyle]="{ 'width': currentUpload?.progress + '%' }">
+                {{currentUpload?.progress | round }}% 
+              </div>
             </div>
-            Progress: {{currentUpload?.image[0]?.name}} | {{currentUpload?.progress}}% Complete
+            Progress: {{currentUpload?.image[0]?.name}} | {{currentUpload?.progress | round }}% Complete
         </div>
         <label for="heroImg"> Upload Hero Image </label>
         <i class="fa fa-question-circle-o" 
