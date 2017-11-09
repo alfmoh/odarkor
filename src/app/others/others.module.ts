@@ -11,6 +11,7 @@ import { FileValueAccessor } from './directives/filevalueaccessor.directive';
 import { FileValidator } from './directives/filevalidator.directive';
 import { FileTypeValidator } from './directives/filetypevalidator.directive';
 import { RoundPipe } from './pipes/round.pipe';
+import { CustomTitleCasePipe } from './pipes/custom-titlecase.pipe';
 
 @NgModule({
   imports: [
@@ -28,12 +29,14 @@ import { RoundPipe } from './pipes/round.pipe';
     FileValueAccessor,
     FileValidator,
     FileTypeValidator,
-    RoundPipe],
+    RoundPipe,
+    CustomTitleCasePipe],
   exports: [
     TinyMceComponent, 
     CloseMenuDirective, 
     FileValueAccessor,
     FileValidator,
-    RoundPipe]
+    RoundPipe,
+    CustomTitleCasePipe]
 })
 export class OthersModule { }

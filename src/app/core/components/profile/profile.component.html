@@ -6,7 +6,7 @@
           alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">{{hero?.name | titlecase }}</h4>
-          <p class="card-text">{{hero?.knownFor}}</p>
+          <p class="card-text">{{hero?.knownFor | customTitleCase }}</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Country: {{hero?.country}}</li>
