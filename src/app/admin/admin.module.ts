@@ -6,10 +6,12 @@ import { UserService } from './../shared/services/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DataTableModule } from "angular-4-data-table";
 
 @NgModule({
   imports: [
     CommonModule,
+    DataTableModule,
     RouterModule.forChild([
       {path: "admin/heroes", component: HeroesListComponent, canActivate: [AuthGuardService,AdminAuthGuardService]}
     ])
