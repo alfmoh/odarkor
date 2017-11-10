@@ -6,17 +6,17 @@ import { UserService } from './../shared/services/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataTableModule } from "angular-4-data-table-bootstrap-4";
+import { HeroesAddEditComponent } from './components/heroes-add-edit/heroes-add-edit.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    DataTableModule,
     RouterModule.forChild([
-      {path: "admin/heroes", component: HeroesListComponent, canActivate: [AuthGuardService,AdminAuthGuardService]}
+      {path: "admin/heroes", component: HeroesListComponent, canActivate: [AuthGuardService,AdminAuthGuardService]},
+      {path: "admin/heroes/add-edit/:id", component: HeroesAddEditComponent, canActivate: [AuthGuardService,AdminAuthGuardService]}
     ])
   ],
-  declarations: [HeroesListComponent],
+  declarations: [HeroesListComponent, HeroesAddEditComponent],
   providers: [AdminAuthGuardService, UserService, AuthService]
 })
 export class AdminModule { }

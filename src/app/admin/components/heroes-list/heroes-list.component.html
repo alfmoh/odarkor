@@ -1,36 +1,26 @@
 <div class="container">
-
-<p>
-  <input
-  #query
-  (keyup) = "filter(query.value)"
-  type="text" class="form-control" placeholder="Search...">
-</p>
-
-  <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
-
-    <data-table-column [property]="'name'" [header]="'Name'" [sortable]="true" [resizable]="true">
-
-      <ng-template #dataTableCell let-item="item">
-        {{item.name}}
-      </ng-template>
-
-    </data-table-column>
-
-    <data-table-column [property]="'knownFor'" [header]="'Known For'" [sortable]="true" [resizable]="true">
-
-      <ng-template #dataTableCell let-item="item">
-        {{item.knownFor}}
-      </ng-template>
-
-    </data-table-column>
-    <data-table-column [property]="'country'" [header]="'Country'" [sortable]="true" [resizable]="true">
-
-      <ng-template #dataTableCell let-item="item">
-        {{item.country}}
-      </ng-template>
-
-    </data-table-column>
-
-  </data-table>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Known For</th>
+        <th scope="col">Country</th>
+        <th scope="col">Submitted By</th>
+        <th scope="col">Date Submitted</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sub of submissions; let i= index ">
+        <td scope="row">{{i + 1}}</td>
+        <td>
+          <a [routerLink]="['add-edit', sub.$key]">{{sub.hero.name}}</a>
+        </td>
+        <td>{{sub.hero.knownFor}}</td>
+        <td>{{sub.hero.country}}</td>
+        <td>{{sub.submittedBy | titlecase }}</td>
+        <td>{{sub.dateSubmitted | date: 'longDate' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

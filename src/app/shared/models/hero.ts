@@ -1,4 +1,3 @@
-import { SubmissionDto } from './submission';
 
 export class Hero {
     name: string;
