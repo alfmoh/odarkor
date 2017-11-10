@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs/Subscription';
 import { Hero } from './../../../shared/models/hero';
 import { Component, OnInit } from '@angular/core';
-import { DataTableResource } from "angular-4-data-table";
+import { DataTableResource } from "angular-4-data-table-bootstrap-4";
 import { HeroService } from '../../../shared/services/hero.service';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/mergeMap";
