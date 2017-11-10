@@ -3,10 +3,9 @@ import { Hero } from './../../../shared/models/hero';
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from "angular-4-data-table-bootstrap-4";
 import { HeroService } from '../../../shared/services/hero.service';
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/mergeMap";
-import "rxjs/add/operator/pairwise";
+import 'rxjs/add/operator/map';
 import { Submission } from '../../../shared/models/submission';
+
 
 @Component({
   selector: 'app-heroes-list',
@@ -23,16 +22,14 @@ items: Hero[] = [];
 itemCount: number;
 
   constructor(private heroService: HeroService) {
-   
-     this.subscription = this.heroService.getAll()
-     .flatMap(h=>h)
-     .map(hero => (hero as Submission).hero)
-     .pairwise()
-      .subscribe(heroes => {
-        this.filteredHeroes = this.heroes = heroes;
+
+    this.subscription = this.heroService.getAll()
+    .map((results:Array<any>) => results.map(r => r.hero))
+     .subscribe(heroes => {
+       this.filteredHeroes = this.heroes = heroes;
 
         this.initializeTable(heroes);
-      })
+     })
 
    }
 
