@@ -57,6 +57,7 @@ import { QuillModule } from 'ngx-quill';
     NgbModule.forRoot().ngModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    QuillModule,
     SanitizeHtmlPipe]
 })
 export class SharedModule { }

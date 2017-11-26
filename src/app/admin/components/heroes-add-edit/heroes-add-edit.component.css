@@ -1,0 +1,31 @@
+.container {
+  background: #efefef;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.btn-success {
+  margin-left: 15px;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+label {
+  font-weight: bold;
+}
+
+.details {
+  padding-top: 20px;
+}
+
+
+/* .card{
+    height: 400px;
+    overflow:auto;
+} */
