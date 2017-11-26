@@ -1,50 +1,53 @@
-<div class="container">
-  <div *ngIf="hero">
-    <div class="row">
+<form [formGroup]="form" (ngSubmit)="submit(form.value)">
+    <div class="container">
+        <div *ngIf="hero">
+            <div class="row">
 
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top" [src]="hero?.imageUrl" alt="Card image cap">
-        </div>
-      </div>
+                <div class="col">
+                    <div class="card">
+                        <img class="card-img-top" [src]="form.get('imageUrl').value" alt="Card image cap">
+                    </div>
+                </div>
 
-      <div class="col">
-        <div>
-          <label for="name">Name</label>
-          <input type="text" class="form-control" [(ngModel)]="hero.name" id="name">
-        </div>
-        <div>
-          <label for="country">Country</label>
-          <input type="text" class="form-control" [(ngModel)]="hero.country" id="country">
-        </div>
-        <div>
-          <label for="birthDate">Date Of Birth</label>
-          <input type="text" class="form-control" [(ngModel)]="hero.birthDate" id="birthDate">
-        </div>
-        <div>
-          <label for="deathDate">Died</label>
-          <input type="text" class="form-control" [(ngModel)]="hero.deathDate" id="deathDate">
-        </div>
-        <div>
-          <label for="knownFor">Known For</label>
-          <input type="text" class="form-control" [(ngModel)]="hero.knownFor" id="knownFor">
-        </div>
-      </div>
+                <div class="col">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" formControlName="name" id="name">
+                    </div>
+                    <div>
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" formControlName="country" id="country">
+                    </div>
+                    <div>
+                        <label for="birthDate">Date Of Birth</label>
+                        <input type="text" class="form-control" formControlName="birthDate" id="birthDate">
+                    </div>
+                    <div>
+                        <label for="deathDate">Died</label>
+                        <input type="text" class="form-control" formControlName="deathDate" id="deathDate">
+                    </div>
+                    <div>
+                        <label for="knownFor">Known For</label>
+                        <input type="text" class="form-control" formControlName="knownFor" id="knownFor">
+                    </div>
+                </div>
 
+            </div>
+
+            <div class="form-group details">
+                <label for="achievementDetails">Achievement Details</label>
+                <quill-editor 
+                    (onContentChanged)="textBoxContentChanged($event)" 
+                    id="achievementDetails" 
+                    formControlName="achievementDetails"
+                        [style]="{'height':'320px'}">
+                </quill-editor>
+            </div>
+            <div class="buttons">
+                <button class="btn btn-danger" type="submit">Reject</button>
+                <button class="btn btn-success" type="submit">Accept</button>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group details">
-      <label for="achievementDetails">Achievement Details</label>
-      <quill-editor 
-      (onContentChanged)="textBoxContentChanged($event)" 
-      id="achievementDetails" 
-      [(ngModel)]="hero.achievementDetails"
-        [style]="{'height':'320px'}">
-      </quill-editor>
-    </div>
-    <div class="buttons">
-      <button class="btn btn-danger">Reject</button>
-      <button class="btn btn-success">Accept</button>
-    </div>
-  </div>
-</div>
+</form>

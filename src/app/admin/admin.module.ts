@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeroService } from './../shared/services/hero.service';
 import { AuthGuardService } from '../shared/services/auth-guard.service';
 import { HeroesListComponent } from './components/heroes-list/heroes-list.component';
@@ -16,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {path: "admin/heroes", component: HeroesListComponent, canActivate: [AuthGuardService,AdminAuthGuardService]},
       {path: "admin/heroes/add-edit/:id", component: HeroesAddEditComponent, canActivate: [AuthGuardService,AdminAuthGuardService]}
