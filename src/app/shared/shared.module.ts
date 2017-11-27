@@ -58,6 +58,7 @@ import { QuillModule } from 'ngx-quill';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     QuillModule,
+    MyDatePickerModule,
     SanitizeHtmlPipe]
 })
 export class SharedModule { }

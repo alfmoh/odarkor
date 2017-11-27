@@ -3,6 +3,7 @@ import { HeroService } from '../../../shared/services/hero.service';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Hero } from '../../../shared/models/hero';
+import { TimeOptions } from '../../../others/utilities/time-options';
 
 @Component({
   selector: 'app-heroes-add-edit',
@@ -14,12 +15,15 @@ export class HeroesAddEditComponent implements OnInit {
   heroId;
   hero: Hero;
   form: FormGroup;
+  birthDateOptions;
+  deathDateOptions;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private heroService: HeroService,
-    fb: FormBuilder
+    fb: FormBuilder,
+    timeOptions: TimeOptions,
   ) {
     this.heroId = this.route.snapshot.params['id'];
     if (this.heroId) {
@@ -45,6 +49,9 @@ export class HeroesAddEditComponent implements OnInit {
       birthDate: ["", Validators.required],
       deathDate: ["", Validators.required]
     })
+
+    this.birthDateOptions = timeOptions.birthDateOptions;
+    this.deathDateOptions = timeOptions.deathDateOptions;
   }
 
 

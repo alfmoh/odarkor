@@ -16,10 +16,6 @@
   cursor: pointer;
 }
 
-label {
-  font-weight: bold;
-}
-
 .details {
   padding-top: 20px;
 }

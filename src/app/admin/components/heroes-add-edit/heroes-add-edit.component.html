@@ -10,25 +10,50 @@
                 </div>
 
                 <div class="col">
-                    <div>
+                    <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" formControlName="name" id="name">
+                        <div *ngIf="form.get('name').touched && form.get('name').invalid">
+                            <div class="error-message">Name is required.</div>
+                        </div>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="country">Country</label>
                         <input type="text" class="form-control" formControlName="country" id="country">
+                        <div *ngIf="form.get('country').touched &&form.get('country').invalid">
+                            <div class="error-message">Country is required.</div>
+                        </div>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="birthDate">Date Of Birth</label>
-                        <input type="text" class="form-control" formControlName="birthDate" id="birthDate">
+                        <!-- <input type="text" class="form-control" formControlName="birthDate" id="birthDate"> -->
+                        <my-date-picker 
+                        [selDate]="hero.birthDate" 
+                        [options]="birthDateOptions" 
+                        id="birthDate" name="birthDate" 
+                        formControlName="birthDate"></my-date-picker>
+                        <div *ngIf="form.get('birthDate').touched && form.get('birthDate').invalid">
+                            <div class="error-message">Birth date is required.</div>
+                        </div>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="deathDate">Died</label>
-                        <input type="text" class="form-control" formControlName="deathDate" id="deathDate">
+                        <!-- <input type="text" class="form-control" formControlName="deathDate" id="deathDate"> -->
+                        <my-date-picker 
+                        [options]="deathDateOptions" 
+                        [selDate]="hero.deathDate" 
+                        id="deathDate" name="deathDate" 
+                        formControlName="deathDate"></my-date-picker>
+                        <div *ngIf="form.get('deathDate').touched && form.get('deathDate').invalid">
+                            <div class="error-message">Death date is required.</div>
+                        </div>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="knownFor">Known For</label>
                         <input type="text" class="form-control" formControlName="knownFor" id="knownFor">
+                        <div *ngIf="form.get('knownFor').touched && form.get('knownFor').invalid">
+                            <div class="error-message">Known attributes are required.</div>
+                        </div>
                     </div>
                 </div>
 
@@ -37,11 +62,16 @@
             <div class="form-group details">
                 <label for="achievementDetails">Achievement Details</label>
                 <quill-editor 
-                    (onContentChanged)="textBoxContentChanged($event)" 
-                    id="achievementDetails" 
-                    formControlName="achievementDetails"
-                        [style]="{'height':'320px'}">
+                (onContentChanged)="textBoxContentChanged($event)" 
+                id="achievementDetails" 
+                formControlName="achievementDetails"
+                    [style]="{'height':'320px'}">
                 </quill-editor>
+            </div>
+            <div *ngIf="form.get('achievementDetails').touched && form.get('achievementDetails').invalid">
+                <div *ngIf="form.get('achievementDetails').hasError('required')">
+                    <div class="error-message">Achievement details are required.</div>
+                </div>
             </div>
             <div class="buttons">
                 <button class="btn btn-danger" type="submit">Reject</button>
