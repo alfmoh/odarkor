@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Hero } from '../../../shared/models/hero';
 import { TimeOptions } from '../../../others/utilities/time-options';
+import * as countries from '../../../others/utilities/countries.json';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'app-heroes-add-edit',
@@ -17,6 +19,7 @@ export class HeroesAddEditComponent implements OnInit {
   form: FormGroup;
   birthDateOptions;
   deathDateOptions;
+  countries: any = countries;
 
   constructor(
     private router: Router,
@@ -24,6 +27,7 @@ export class HeroesAddEditComponent implements OnInit {
     private heroService: HeroService,
     fb: FormBuilder,
     timeOptions: TimeOptions,
+    private postsService: PostsService
   ) {
     this.heroId = this.route.snapshot.params['id'];
     if (this.heroId) {
@@ -31,7 +35,7 @@ export class HeroesAddEditComponent implements OnInit {
         hero => {
           this.hero = hero;
           this.form.controls.name.setValue(this.hero.name),
-            this.form.controls.country.setValue(this.hero.country)
+          this.form.controls.country.setValue([this.hero.code,this.hero.country].join(","))
           this.form.controls.knownFor.setValue(this.hero.knownFor)
           this.form.controls.achievementDetails.setValue(this.hero.achievementDetails)
           this.form.controls.birthDate.setValue(this.hero.birthDate)
@@ -63,6 +67,13 @@ export class HeroesAddEditComponent implements OnInit {
   }
 
   submit(input) {
-    console.log(input)
+    let formatToExtractDates = Object.assign(
+      {},
+      input, {
+        birthDate: input.birthDate.formatted,
+        deathDate: input.deathDate.formatted
+      })
+    this.postsService.approve(formatToExtractDates);
+    this.router.navigate(["/"]);
   }
 }

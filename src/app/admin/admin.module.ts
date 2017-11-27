@@ -1,3 +1,4 @@
+import { PostsService } from './services/posts.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeroService } from './../shared/services/hero.service';
 import { AuthGuardService } from '../shared/services/auth-guard.service';
@@ -23,6 +24,6 @@ import { SharedModule } from '../shared/shared.module';
     ])
   ],
   declarations: [HeroesListComponent, HeroesAddEditComponent],
-  providers: [AdminAuthGuardService, UserService, AuthService]
+  providers: [AdminAuthGuardService, UserService, AuthService, PostsService]
 })
 export class AdminModule { }

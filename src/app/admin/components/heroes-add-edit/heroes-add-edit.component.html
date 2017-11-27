@@ -19,14 +19,17 @@
                     </div>
                     <div class="form-group">
                         <label for="country">Country</label>
-                        <input type="text" class="form-control" formControlName="country" id="country">
-                        <div *ngIf="form.get('country').touched &&form.get('country').invalid">
+                        <select formControlName="country" class="form-control">
+                            <option
+                             *ngFor="let country of countries"          
+                             [value]="[country.code,country.name]" >{{country.name}}</option>
+                        </select>
+                        <div *ngIf="form.get('country').touched && form.get('country').invalid">
                             <div class="error-message">Country is required.</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="birthDate">Date Of Birth</label>
-                        <!-- <input type="text" class="form-control" formControlName="birthDate" id="birthDate"> -->
+                        <label for="birthDate">Date Of Birth</label>                        
                         <my-date-picker 
                         [selDate]="hero.birthDate" 
                         [options]="birthDateOptions" 
@@ -38,7 +41,6 @@
                     </div>
                     <div class="form-group">
                         <label for="deathDate">Died</label>
-                        <!-- <input type="text" class="form-control" formControlName="deathDate" id="deathDate"> -->
                         <my-date-picker 
                         [options]="deathDateOptions" 
                         [selDate]="hero.deathDate" 
