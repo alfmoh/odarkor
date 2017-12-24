@@ -1,3 +1,4 @@
+import { Status } from './../../../shared/enums/status';
 import { HeroService } from './../../../shared/services/hero.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -11,7 +12,7 @@ export class PostComponent {
   submissions$;
 
   constructor(private heroService: HeroService) {
-    this.submissions$ = this.heroService.getAll();
+    this.submissions$ = this.heroService.getAll(Status.approved);
   }
 
 }

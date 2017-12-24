@@ -1,5 +1,6 @@
-<form [formGroup]="form" (ngSubmit)="submit(form.value)">
+<form [formGroup]="form" (ngSubmit)="approve(form.value)">
     <div class="container">
+        <ngb-alert *ngIf="approved" type="success" (close)="staticAlertClosed = true">Article accepted. Redirecting to homepage 3s...</ngb-alert>
         <div *ngIf="hero">
             <div class="row">
 
@@ -80,6 +81,7 @@
                 <button class="btn btn-success" type="submit">Accept</button>
             </div>
         </div>
+        <ngb-alert *ngIf="approved" type="success" (close)="staticAlertClosed = true">Article accepted. Redirecting to homepage in 3s...</ngb-alert>
     </div>
 
 </form>

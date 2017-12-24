@@ -4,6 +4,7 @@ import { HeroService } from './../../../shared/services/hero.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import "rxjs/add/operator/take";
+import { Status } from '../../../shared/enums/status';
 
 @Component({
   selector: 'profile',
@@ -22,7 +23,7 @@ export class ProfileComponent {
     private postService: PostsService
   ) {
     this.id = this.route.snapshot.paramMap.get("id");
-    if (this.id) this.heroService.get(this.id).take(1).subscribe(hero => this.hero = hero);
+    if (this.id) this.heroService.get(this.id,Status.approved).take(1).subscribe(hero => this.hero = hero);
     this.user = postService.getSubmittedByUser(this.id);
   }
 

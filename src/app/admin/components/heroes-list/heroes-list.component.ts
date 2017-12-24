@@ -1,3 +1,4 @@
+import { Status } from './../../../shared/enums/status';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 import { HeroService } from '../../../shared/services/hero.service';
@@ -16,7 +17,7 @@ submissions: Submission[]
 
   constructor(private heroService: HeroService) {
 
-    this.subscription = this.heroService.getAll()
+    this.subscription = this.heroService.getAll(Status.submissions)
      .subscribe(submissions => this.submissions = submissions)
 
    }
