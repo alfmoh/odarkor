@@ -1,3 +1,4 @@
+import { Submission } from './../../../shared/models/submission';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HeroService } from '../../../shared/services/hero.service';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +7,7 @@ import { Hero } from '../../../shared/models/hero';
 import { TimeOptions } from '../../../others/utilities/time-options';
 import * as countries from '../../../others/utilities/countries.json';
 import { PostsService } from '../../services/posts.service';
+import { UserService } from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-heroes-add-edit',
@@ -20,14 +22,17 @@ export class HeroesAddEditComponent implements OnInit {
   birthDateOptions;
   deathDateOptions;
   countries: any = countries;
+  user;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private heroService: HeroService,
+    private submission: Submission,
+    private postsService: PostsService,
+    private userService: UserService,
     fb: FormBuilder,
     timeOptions: TimeOptions,
-    private postsService: PostsService
   ) {
     this.heroId = this.route.snapshot.params['id'];
     if (this.heroId) {
@@ -56,6 +61,7 @@ export class HeroesAddEditComponent implements OnInit {
 
     this.birthDateOptions = timeOptions.birthDateOptions;
     this.deathDateOptions = timeOptions.deathDateOptions;
+    userService.getUser().subscribe(user => this.user = user);
   }
 
 
@@ -73,7 +79,14 @@ export class HeroesAddEditComponent implements OnInit {
         birthDate: input.birthDate.formatted,
         deathDate: input.deathDate.formatted
       })
-    this.postsService.approve(formatToExtractDates);
+
+    this.submission.hero = formatToExtractDates;
+    this.submission.submittedBy = this.user.displayName;
+    this.postsService.approve(this.submission);
+    this.router.navigate(["/"]);
+  }
+
+  reject(){
     this.router.navigate(["/"]);
   }
 }

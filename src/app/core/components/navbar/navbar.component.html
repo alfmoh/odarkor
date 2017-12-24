@@ -45,6 +45,10 @@
           closeMenu
           [menu]="menu"
           class="dropdown-item"  (click)="logout()" >Log Out</a>
+          <a
+          closeMenu
+          [menu]="menu"
+          class="dropdown-item" *ngIf="(appUser$|async)?.isAdmin" [routerLink]="['/admin/heroes']" >Heroes</a>
         </div>
       </li>           
     </ul>
