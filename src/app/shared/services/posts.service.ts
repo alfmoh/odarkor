@@ -34,7 +34,7 @@ export class PostsService {
   }
 
   getSubmittedByUser(heroId) {
-    return this.db.object("/submissions/" + heroId + "/submittedBy");
+    return this.db.object("/approved/" + heroId + "/submittedBy");
   }
 
   pushUploadWithImgUrl(submissionDto: SubmissionDto, modalBoxContent) {

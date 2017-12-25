@@ -1,3 +1,4 @@
+import { SubmissionDto } from './../shared/models/submission';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './../shared/shared.module';
 import { RouterModule } from '@angular/router';
@@ -12,6 +13,9 @@ import { FileValidator } from './directives/filevalidator.directive';
 import { FileTypeValidator } from './directives/filetypevalidator.directive';
 import { RoundPipe } from './pipes/round.pipe';
 import { CustomTitleCasePipe } from './pipes/custom-titlecase.pipe';
+import { Submission } from '../shared/models/submission';
+import { UserService } from '../shared/services/user.service';
+import { Hero } from '../shared/models/hero';
 
 @NgModule({
   imports: [
@@ -37,6 +41,7 @@ import { CustomTitleCasePipe } from './pipes/custom-titlecase.pipe';
     FileValueAccessor,
     FileValidator,
     RoundPipe,
-    CustomTitleCasePipe]
+    CustomTitleCasePipe],
+    providers: [Hero, SubmissionDto,Submission, UserService]
 })
 export class OthersModule { }

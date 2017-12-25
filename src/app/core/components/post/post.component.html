@@ -2,12 +2,12 @@
   <div class="top-space"></div>
   <div class="module" *ngFor="let heroes of submissions$ | async ">
     <a class="routing" [routerLink]="['/profile/',heroes?.$key]">
-      <h2 class="heading">{{heroes?.hero.name}}
-        <sup class="country">{{heroes?.hero.code}}</sup>
+      <h2 class="heading">{{heroes?.hero?.name}}
+        <sup class="country">{{heroes?.hero?.code}}</sup>
       </h2>
     </a>
     <div class="desc">
-      <p>{{heroes?.hero.knownFor | customTitleCase}}</p>
+      <p>{{heroes?.hero?.knownFor | customTitleCase}}</p>
     </div>
   </div>
 </div>

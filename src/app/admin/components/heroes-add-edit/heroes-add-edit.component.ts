@@ -1,3 +1,4 @@
+import { SubmissionFactory } from "../../../others/utilities/submission-factory";
 import { Status } from "./../../../shared/enums/status";
 import { Submission } from "./../../../shared/models/submission";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -31,10 +32,9 @@ export class HeroesAddEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private submission: Submission,
     private postsService: PostsService,
-    private userService: UserService,
     private modalService: NgbModal,
+    private submissionFactory: SubmissionFactory,
     fb: FormBuilder,
     timeOptions: TimeOptions
   ) {
@@ -67,33 +67,15 @@ export class HeroesAddEditComponent implements OnInit {
 
     this.birthDateOptions = timeOptions.birthDateOptions;
     this.deathDateOptions = timeOptions.deathDateOptions;
-    userService.getUser().subscribe(user => (this.user = user));
+    this.user = submissionFactory.user;
   }
 
   ngOnInit() {}
 
-  textBoxContentChanged(input) {
-    // console.log(input)
-  }
-
   approve(input) {
-    let countryAndCode = input.country as string;
-    let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
-    let getCountry = countryAndCode.substr(
-      countryAndCode.indexOf(",") + 1,
-      countryAndCode.length
-    );
-
-    let contentFormat = Object.assign({}, input, {
-      birthDate: input.birthDate.formatted,
-      deathDate: input.deathDate.formatted,
-      country: getCountry,
-      code: getCode
-    });
-
-    this.submission.hero = contentFormat;
-    this.submission.submittedBy = this.user.displayName;
-    this.postsService.action(this.submission,Status.approved);
+    this.submissionFactory.formContentFormat(input);
+    let submission = (this.submissionFactory as any).submission;
+    this.postsService.action(submission, Status.approved);
 
     this.approved = true;
 
@@ -102,37 +84,22 @@ export class HeroesAddEditComponent implements OnInit {
     }, 3000);
   }
 
-  open(content, formContent) {
+  open(content, input) {
     this.modalService.open(content).result.then(
       result => {
         if (result === "yes") {
-          let countryAndCode = formContent.country as string;
-          let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
-          let getCountry = countryAndCode.substr(
-            countryAndCode.indexOf(",") + 1,
-            countryAndCode.length
-          );
+          this.submissionFactory.formContentFormat(input);
+          let submission = (this.submissionFactory as any).submission;
+          this.postsService.action(submission, Status.rejected);
 
-          let contentFormat = Object.assign({}, formContent, {
-            birthDate: formContent.birthDate.formatted,
-            deathDate: formContent.deathDate.formatted,
-            country: getCountry,
-            code: getCode
-          });
-
-          this.submission.hero = contentFormat;
-          this.submission.submittedBy = this.user.displayName;
-
-          this.postsService.action(this.submission,Status.rejected);
           this.rejected = true;
+
           setTimeout(() => {
             this.router.navigate(["/"]);
           }, 3000);
         }
       },
-      reason => {
-        // console.log(reason)
-      }
+      reason => {}
     );
   }
 }

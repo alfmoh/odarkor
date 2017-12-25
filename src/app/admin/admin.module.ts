@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { HeroesAddEditComponent } from './components/heroes-add-edit/heroes-add-edit.component';
 import { SharedModule } from '../shared/shared.module';
 import { Submission } from '../shared/models/submission';
+import { SubmissionFactory } from '../others/utilities/submission-factory';
 
 @NgModule({
   imports: [
@@ -25,6 +26,6 @@ import { Submission } from '../shared/models/submission';
     ])
   ],
   declarations: [HeroesListComponent, HeroesAddEditComponent],
-  providers: [AdminAuthGuardService, UserService, AuthService, PostsService, Submission]
+  providers: [AdminAuthGuardService, AuthService, PostsService, SubmissionFactory]
 })
 export class AdminModule { }
