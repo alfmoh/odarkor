@@ -1,6 +1,28 @@
+<ng-template #modalBoxContent let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title btn-outline-danger">Wait!</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to reject this article?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" (click)="c('yes')">Yes</button>
+        <button type="button" class="btn" (click)="c()">Cancel</button>
+    </div>
+</ng-template>
+
+
 <form [formGroup]="form" (ngSubmit)="approve(form.value)">
     <div class="container">
-        <ngb-alert *ngIf="approved" type="success" (close)="staticAlertClosed = true">Article accepted. Redirecting to homepage 3s...</ngb-alert>
+        <ngb-alert *ngIf="approved" type="success" (close)="staticAlertClosed = true">
+            Article accepted. Redirecting to homepage 3s...
+        </ngb-alert>
+        <ngb-alert *ngIf="rejected" type="info" (close)="staticAlertClosed = true">
+            Article rejected! Redirecting to homepage 3s...
+        </ngb-alert>
         <div *ngIf="hero">
             <div class="row">
 
@@ -77,11 +99,16 @@
                 </div>
             </div>
             <div class="buttons">
-                <button class="btn btn-danger" (click)="reject()">Reject</button>
+                <button class="btn btn-danger" type="button" (click)="open(modalBoxContent)">Reject</button>
                 <button class="btn btn-success" type="submit">Accept</button>
             </div>
         </div>
-        <ngb-alert *ngIf="approved" type="success" (close)="staticAlertClosed = true">Article accepted. Redirecting to homepage in 3s...</ngb-alert>
+        <ngb-alert *ngIf="approved" type="success" (close)="staticAlertClosed = true">
+            Article accepted. Redirecting to homepage in 3s...
+        </ngb-alert>
+        <ngb-alert *ngIf="rejected" type="info" (close)="staticAlertClosed = true">
+            Article rejected! Redirecting to homepage 3s...
+        </ngb-alert>
     </div>
 
 </form>

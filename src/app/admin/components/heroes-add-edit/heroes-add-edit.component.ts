@@ -1,4 +1,4 @@
-import { Status } from './../../../shared/enums/status';
+import { Status } from "./../../../shared/enums/status";
 import { Submission } from "./../../../shared/models/submission";
 import { Router, ActivatedRoute } from "@angular/router";
 import { HeroService } from "../../../shared/services/hero.service";
@@ -9,6 +9,7 @@ import { TimeOptions } from "../../../others/utilities/time-options";
 import * as countries from "../../../others/utilities/countries.json";
 import { PostsService } from "../../services/posts.service";
 import { UserService } from "../../../shared/services/user.service";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "heroes-add-edit",
@@ -24,6 +25,7 @@ export class HeroesAddEditComponent implements OnInit {
   countries: any = countries;
   user;
   approved;
+  rejected;
 
   constructor(
     private router: Router,
@@ -32,6 +34,7 @@ export class HeroesAddEditComponent implements OnInit {
     private submission: Submission,
     private postsService: PostsService,
     private userService: UserService,
+    private modalService: NgbModal,
     fb: FormBuilder,
     timeOptions: TimeOptions
   ) {
@@ -99,7 +102,19 @@ export class HeroesAddEditComponent implements OnInit {
     }, 3000);
   }
 
-  reject() {
-    this.router.navigate(["/"]);
+  open(content) {
+    this.modalService.open(content).result.then(
+      result => {
+        if (result === "yes") {
+          this.rejected = true;
+          setTimeout(() => {
+            this.router.navigate(["/"]);
+          }, 3000);
+        }
+      },
+      reason => {
+        // console.log(reason)
+      }
+    );
   }
 }
