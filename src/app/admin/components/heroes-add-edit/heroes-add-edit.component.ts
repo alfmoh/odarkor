@@ -93,7 +93,7 @@ export class HeroesAddEditComponent implements OnInit {
 
     this.submission.hero = contentFormat;
     this.submission.submittedBy = this.user.displayName;
-    this.postsService.approve(this.submission);
+    this.postsService.action(this.submission,Status.approved);
 
     this.approved = true;
 
@@ -102,10 +102,28 @@ export class HeroesAddEditComponent implements OnInit {
     }, 3000);
   }
 
-  open(content) {
+  open(content, formContent) {
     this.modalService.open(content).result.then(
       result => {
         if (result === "yes") {
+          let countryAndCode = formContent.country as string;
+          let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
+          let getCountry = countryAndCode.substr(
+            countryAndCode.indexOf(",") + 1,
+            countryAndCode.length
+          );
+
+          let contentFormat = Object.assign({}, formContent, {
+            birthDate: formContent.birthDate.formatted,
+            deathDate: formContent.deathDate.formatted,
+            country: getCountry,
+            code: getCode
+          });
+
+          this.submission.hero = contentFormat;
+          this.submission.submittedBy = this.user.displayName;
+
+          this.postsService.action(this.submission,Status.rejected);
           this.rejected = true;
           setTimeout(() => {
             this.router.navigate(["/"]);

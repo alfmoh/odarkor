@@ -1,4 +1,5 @@
 export enum Status {
     submissions = "submissions",
-    approved = "approved"
+    approved = "approved",
+    rejected = "rejected"
 }
