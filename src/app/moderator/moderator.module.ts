@@ -6,7 +6,7 @@ import { HeroesListComponent } from './components/heroes-list/heroes-list.compon
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 import { UserService } from './../shared/services/user.service';
-import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { ModeratorAuthGuardService } from './services/moderator-auth-guard.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroesAddEditComponent } from './components/heroes-add-edit/heroes-add-edit.component';
@@ -21,11 +21,11 @@ import { SubmissionFactory } from '../others/utilities/submission-factory';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      {path: "admin/heroes", component: HeroesListComponent, canActivate: [AuthGuardService,AdminAuthGuardService]},
-      {path: "admin/heroes/add-edit/:id", component: HeroesAddEditComponent, canActivate: [AuthGuardService,AdminAuthGuardService]}
+      {path: "moderator/heroes", component: HeroesListComponent, canActivate: [AuthGuardService,ModeratorAuthGuardService]},
+      {path: "moderator/heroes/add-edit/:id", component: HeroesAddEditComponent, canActivate: [AuthGuardService,ModeratorAuthGuardService]}
     ])
   ],
   declarations: [HeroesListComponent, HeroesAddEditComponent],
-  providers: [AdminAuthGuardService, AuthService, PostsService, SubmissionFactory]
+  providers: [ModeratorAuthGuardService, AuthService, PostsService, SubmissionFactory]
 })
-export class AdminModule { }
+export class ModeratorModule { }

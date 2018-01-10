@@ -48,7 +48,7 @@
           <a
           closeMenu
           [menu]="menu"
-          class="dropdown-item" *ngIf="(appUser$|async)?.isAdmin" [routerLink]="['/admin/heroes']" >Heroes</a>
+          class="dropdown-item" *ngIf="(appUser$|async)?.isModerator" [routerLink]="['/moderator/heroes']" >Heroes</a>
         </div>
       </li>           
     </ul>

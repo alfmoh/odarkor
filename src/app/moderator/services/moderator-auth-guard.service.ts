@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AdminAuthGuardService implements CanActivate {
+export class ModeratorAuthGuardService implements CanActivate {
 
   constructor(
     private userService: UserService,
@@ -17,7 +17,7 @@ export class AdminAuthGuardService implements CanActivate {
 
     canActivate() : Observable<boolean>{
       return this.auth.appUser$.map(appUser => {
-        if(appUser.isAdmin) return true;
+        if(appUser.isModerator) return true;
         
           this.router.navigate(["/404"]);
           return false;
