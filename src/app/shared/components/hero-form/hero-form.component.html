@@ -14,7 +14,7 @@
   </div>
 </ng-template>
 
-<form [formGroup]="form" (ngSubmit)="submit(form.value,modalBoxContent)">
+<form [formGroup]="form" (ngSubmit)="submit(form.value,modalBoxContent)" (keydown.enter)="$event.preventDefault()">
   <div class="container ">
     <div class="submitForm">
       <div class="col-md-8 center">
@@ -124,8 +124,33 @@
           <div class="secondary">A minimum of 700 words are required.</div>
         </div> -->
       </div>
-      
-      <button [disabled]="!selectedFiles || form.invalid" type="submit" class="btn btn-primary">Submit</button>
+
+      <div>
+        <div class="col-auto sourcesRef">
+            <span><strong>Sources & References </strong></span>
+            <i class="fa fa-exclamation-triangle"
+               aria-hidden="true" placement="right" 
+               ngbTooltip="Sources or References should be reliable and verifiable"></i>
+            <!-- <i class="fa btn btn-success fa-plus sourcesRefButton"
+            title="Add new source" aria-hidden="true">Add new source</i> -->
+        </div>
+        <ul>
+            <li *ngFor="let source of sources">
+                <pre>{{ source }} </pre>
+            </li>
+        </ul>
+        <div class="form-inline">
+            <input class="form-control col-9 sourceRef" type="text" #source
+            placeholder="example: books, articles, etc"
+             (keyup.enter)="addNewSource(source.value)"> 
+            <button type="button" class="btn btn-primary includeButton"
+             (click)="addNewSource(source.value)">Include this source</button>
+        </div>
+              <em>**At least one source or reference is needed.**</em>
+      </div>
+
+      <button [disabled]="!selectedFiles || sources.length == 0 || form.invalid" 
+        type="submit" class="btn btn-success">Submit</button>
     </div>
   </div>
 </form>

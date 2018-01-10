@@ -28,6 +28,7 @@ export class HeroFormComponent {
 
   currentUpload: SubmissionDto;
   selectedFiles: FileList;
+  sources = [];
 
   constructor(
     private postsService: PostsService,
@@ -46,13 +47,17 @@ export class HeroFormComponent {
       achievementDetails: ["", [Validators.required]],
       image: ["", [FileValidator.validate, FileTypeValidator.validate]],
       birthDate: [timeOptions.defaultDate, Validators.required],
-      deathDate: [timeOptions.defaultDate, Validators.required]
+      deathDate: [timeOptions.defaultDate, Validators.required],
+      // sourcesAndRef: ["", [Validators.required, Validators.min(1)]]
     })
 
     this.birthDateOptions = timeOptions.birthDateOptions;
     this.deathDateOptions = timeOptions.deathDateOptions;
   }
 
+  addNewSource(source){
+    if(source) this.sources.push(source);
+  }
 
   textBoxContentChanged(input) {
     this.achievementText = input.html;
