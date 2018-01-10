@@ -21,8 +21,8 @@ import { SubmissionFactory } from '../others/utilities/submission-factory';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      {path: "moderator/heroes", component: HeroesListComponent, canActivate: [AuthGuardService,ModeratorAuthGuardService]},
-      {path: "moderator/heroes/add-edit/:id", component: HeroesAddEditComponent, canActivate: [AuthGuardService,ModeratorAuthGuardService]}
+      {path: "heroes/submissions", component: HeroesListComponent, canActivate: [AuthGuardService,ModeratorAuthGuardService]},
+      {path: "heroes/submissions/add-edit/:id", component: HeroesAddEditComponent, canActivate: [AuthGuardService,ModeratorAuthGuardService]}
     ])
   ],
   declarations: [HeroesListComponent, HeroesAddEditComponent],
