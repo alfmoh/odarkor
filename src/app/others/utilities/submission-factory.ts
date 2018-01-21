@@ -13,22 +13,39 @@ export class SubmissionFactory {
     userService.getUser().subscribe(user => (this.user = user));
   }
 
-  public formContentFormat(input,sources) {
+  retriveCountryAndCode(input: any) {
     let countryAndCode = input.country as string;
-    let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
-    let getCountry = countryAndCode.substr(
+    let code = countryAndCode.slice(0, countryAndCode.indexOf(","));
+    let country = countryAndCode.substr(
       countryAndCode.indexOf(",") + 1,
       countryAndCode.length
     );
+    return { country, code };
+  }
 
-    let contentFormat = Object.assign({}, input, {
-      birthDate: input.birthDate.formatted,
-      deathDate: input.deathDate.formatted,
-      country: getCountry,
-      code: getCode
+  retriveBirthDeathDate(input: any) {
+    let birthDate = !input.birthDate.formatted
+      ? "01/01/1000"
+      : input.birthDate.formatted;
+    let deathDate = !input.deathDate.formatted
+      ? "01/01/1000"
+      : input.deathDate.formatted;
+    return { birthDate, deathDate };
+  }
+
+  public formContentFormat(input, sources) {
+    let { country, code } = this.retriveCountryAndCode(input);
+    let { birthDate, deathDate } = this.retriveBirthDeathDate(input);
+
+    let hero = Object.assign({}, input, {
+      birthDate,
+      deathDate,
+      country,
+      code
     });
+    if (input.image) this.submission.image = input.image;
     this.submission.sources = sources;
-    this.submission.hero = contentFormat;
+    this.submission.hero = hero;
     this.submission.submittedBy = this.user.displayName;
 
     return this.submission;

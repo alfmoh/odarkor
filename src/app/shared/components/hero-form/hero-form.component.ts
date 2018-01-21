@@ -9,9 +9,10 @@ import { Component, OnInit } from "@angular/core";
 import { IMyOptions, IMyDateModel, IMyDate } from "mydatepicker";
 import { TimeOptions } from "../../../others/utilities/time-options";
 import * as countries from "../../../others/utilities/countries.json";
-import { SubmissionDto } from "../../models/submission";
+import { Submission } from "../../models/submission";
 import "automapper-ts/dist/automapper";
 import {} from "automapper-ts";
+import { SubmissionFactory } from "../../../others/utilities/submission-factory";
 
 @Component({
   selector: "hero-form",
@@ -25,7 +26,7 @@ export class HeroFormComponent {
   achievementText;
   countries: any = countries;
 
-  currentUpload: SubmissionDto;
+  currentUpload: Submission;
   selectedFiles: FileList;
   sources = [];
 
@@ -34,7 +35,8 @@ export class HeroFormComponent {
     private userService: UserService,
     private modalService: NgbModal,
     private router: Router,
-    private submissionDto: SubmissionDto,
+    private submission: Submission,
+    private submissionFactory: SubmissionFactory,
     fb: FormBuilder,
     timeOptions: TimeOptions
   ) {
@@ -67,46 +69,16 @@ export class HeroFormComponent {
   }
 
   upload(submission, modalBoxContent) {
-    let file = submission.image[0];
     this.currentUpload = submission;
     this.postsService.pushUploadWithImgUrl(submission, modalBoxContent);
   }
 
   submit(input, modalBoxContent) {
-    let countryAndCode = input.country as string;
-    let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
-    let getCountry = countryAndCode.substr(
-      countryAndCode.indexOf(",") + 1,
-      countryAndCode.length
+    this.submission = this.submissionFactory.formContentFormat(
+      input,
+      this.sources
     );
-    let birthDate = !input.birthDate.formatted
-      ? "01/01/1000"
-      : input.birthDate.formatted;
-    let deathDate = !input.deathDate.formatted
-      ? "01/01/1000"
-      : input.deathDate.formatted;
 
-    automapper
-      .createMap("formInput", "submissionDto")
-      .forMember("country", opts => {
-        return getCountry;
-      })
-      .forMember("code", () => {
-        return getCode;
-      })
-      .forMember("achievementDetails", () => {
-        return this.achievementText;
-      })
-      .forMember("birthDate", () => {
-        return birthDate;
-      })
-      .forMember("deathDate", () => {
-        return deathDate;
-      })
-      .forMember("sources", () => this.sources);
-
-    this.submissionDto = automapper.map("formInput", "submissionDto", input);
-
-    this.upload(this.submissionDto, modalBoxContent);
+    this.upload(this.submission, modalBoxContent);
   }
 }

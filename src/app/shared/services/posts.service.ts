@@ -37,7 +37,7 @@ export class PostsService {
     return this.db.object("/approved/" + heroId + "/submittedBy");
   }
 
-  pushUploadWithImgUrl(submissionDto: SubmissionDto, modalBoxContent) {
+  pushUploadWithImgUrl(submissionDto: Submission, modalBoxContent) {
     const storageRef = firebase.storage().ref();
     this.uploadTask = storageRef.child(`${this.basePath}/${submissionDto.image[0].name + " - " + Date.now()}`).put(submissionDto.image[0]);
 
@@ -50,15 +50,11 @@ export class PostsService {
         console.log(error)
       },
       () => {
-        submissionDto.imageUrl = this.uploadTask.snapshot.downloadURL;
+        submissionDto.hero.imageUrl = this.uploadTask.snapshot.downloadURL;
 
         this.submission.submittedBy = this.user.displayName;
 
-        automapper.createMap("submissionDto", "hero")
-          .forMember('image', (opts) => { opts.ignore(); })
-          .forMember("progress", (opts) => { opts.ignore() })
-
-        this.submission.hero = automapper.map("submissionDto", "hero", submissionDto)
+        delete this.submission.progress;
         this.submission.sources = submissionDto.sources;
 
         this.create(this.submission);

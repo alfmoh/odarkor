@@ -21,6 +21,8 @@ export class Submission {
   dateSubmitted;
   submittedBy;
   sources;
+  image: FileList;
+  progress: number;
 
   constructor() {
     this.dateSubmitted = new Date(Date.now()).toString();

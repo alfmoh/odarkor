@@ -22,6 +22,7 @@ import { SubmissionDto } from "./models/submission";
 import { Hero } from "./models/hero";
 import { QuillModule } from "ngx-quill";
 import { SidebarModule } from "ng-sidebar";
+import { SubmissionFactory } from "../others/utilities/submission-factory";
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import { SidebarModule } from "ng-sidebar";
     SubmissionDto,
     Submission,
     Hero,
-    UserService
+    UserService,
+    SubmissionFactory
   ],
   exports: [
     HeroFormComponent,

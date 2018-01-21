@@ -39,7 +39,7 @@ export class ProfileComponent {
     this.user = postService.getSubmittedByUser(this.id);
   }
 
-  private _toggleOpened(): void {
+   _toggleOpened(): void {
     this._opened = !this._opened;
   }
 }

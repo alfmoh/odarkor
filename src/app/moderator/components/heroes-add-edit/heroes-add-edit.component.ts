@@ -81,8 +81,10 @@ export class HeroesAddEditComponent implements OnInit {
   }
 
   approve(input) {
-    this.submissionFactory.formContentFormat(input, this.sources);
-    let submission = (this.submissionFactory as any).submission;
+    let submission = this.submissionFactory.formContentFormat(
+      input,
+      this.sources
+    );
     this.postsService.action(submission, Status.approved);
 
     this.approved = true;
