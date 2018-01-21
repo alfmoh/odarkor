@@ -15,7 +15,7 @@
 </ng-template>
 
 
-<form [formGroup]="form" (ngSubmit)="approve(form.value)">
+<form [formGroup]="form" (ngSubmit)="approve(form.value)" (keydown.enter)="$event.preventDefault()">
     <div class="container">
         <ngb-alert *ngIf="approved" type="success" (close)="staticAlertClosed = true">
             Article accepted. Redirecting to homepage 3s...
@@ -97,6 +97,25 @@
                     <div class="error-message">Achievement details are required.</div>
                 </div>
             </div>
+            <div class="col-auto sourcesRef">
+                    <em>Sources & References</em>
+                    <i class="fa fa-exclamation-triangle"
+                       aria-hidden="true" placement="right" 
+                       ngbTooltip="Sources or References should be reliable and verifiable"></i>
+            </div>
+            <ul>
+                <li *ngFor="let source of sources">
+                    <pre>{{ source }} </pre>
+                </li>
+            </ul>
+            <div class="form-inline">
+                <input class="form-control col-9 sourceRef" 
+                type="text" #source placeholder="example: books, articles, etc" 
+                (keyup.enter)="addNewSource(source.value)">
+                <button type="button" class="btn btn-primary includeButton" 
+                (click)="addNewSource(source.value)">Include this source</button>
+            </div>
+            <em>**More sources or references can be added**</em>
             <div class="buttons">
                 <button class="btn btn-danger" type="button" (click)="open(modalBoxContent,form.value)">Reject</button>
                 <button class="btn btn-success" type="submit">Accept</button>

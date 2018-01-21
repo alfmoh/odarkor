@@ -1,23 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 @import url(https://fonts.googleapis.com/css?family=Vollkorn);
 @import url(https://fonts.googleapis.com/css?family=Dosis);
 @import url(https://fonts.googleapis.com/css?family=Amatic+SC:400,700);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
-
-
 body {
-    padding-top: 80px;
+  padding-top: 80px;
 }
 
 .form-control.ng-touched.ng-invalid {
-    border: 2px solid red;
-}
-.error-message {
-    color: red;
+  border: 2px solid red;
 }
 
-.ql-container.ql-snow{
-    background-color: #fff;
-  }
+.error-message {
+  color: red;
+}
+
+.ql-container.ql-snow {
+  background-color: #fff;
+}
+
+aside.ng-sidebar {
+  background-color: #f2f2f2;
+  width: 40%;
+  margin-left: 5px;
+}

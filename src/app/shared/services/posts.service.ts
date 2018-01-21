@@ -59,6 +59,7 @@ export class PostsService {
           .forMember("progress", (opts) => { opts.ignore() })
 
         this.submission.hero = automapper.map("submissionDto", "hero", submissionDto)
+        this.submission.sources = submissionDto.sources;
 
         this.create(this.submission);
         this.open(modalBoxContent);

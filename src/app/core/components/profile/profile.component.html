@@ -1,28 +1,52 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <img class="card-img-top" [src]="hero?.imageUrl"
-          alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">{{hero?.name | titlecase }}</h4>
-          <p class="card-text">{{hero?.knownFor | customTitleCase }}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Country: {{hero?.country}}</li>
-          <li class="list-group-item">Born: {{hero?.birthDate | date:'longDate'}}</li>
-          <li class="list-group-item">Died: {{hero?.deathDate| date : 'longDate'}}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col">
-      <div class="name">{{hero?.name | titlecase }}</div>
-      <br>
-      <div [innerHTML]="hero?.achievementDetails | sanitizeHtml ">
+<ng-sidebar-container>
+  <ng-sidebar [(opened)]="_opened" 
+      position="right" 
+      showBackdrop="true"
+      closeOnClickBackdrop="true"
+      closeOnClickOutside="true"
+      keyClose="true">
 
+        <button type="button" class="btn btn-secondary btn-sm" (click)="_toggleOpened()">Close</button>
+    <p>
+    </p>
+    <hr>
+    <div class="sources-list">
+        <ol>
+            <li *ngFor="let source of submission?.sources" >{{source}}</li>
+        </ol>
+    </div>
+  </ng-sidebar>
+  <div ng-sidebar-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" [src]="hero?.imageUrl" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">{{hero?.name | titlecase }}</h4>
+              <p class="card-text">{{hero?.knownFor | customTitleCase }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Country: {{hero?.country}}</li>
+              <li class="list-group-item">Born: {{hero?.birthDate | date:'longDate'}}</li>
+              <li class="list-group-item">Died: {{hero?.deathDate| date : 'longDate'}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col">
+          <div class="name">{{hero?.name | titlecase }}</div>
+          <br>
+          <div [innerHTML]="hero?.achievementDetails | sanitizeHtml ">
+
+          </div>
+        </div>
       </div>
+      <hr/>
+      <span>Submitted by: {{(user | async)?.$value | titlecase }}</span>
+      <span (click)="_toggleOpened()" class="float-right sources-ref">
+        Sources and References
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </span>
     </div>
   </div>
-  <hr/>
-  <p>Submitted by: {{(user | async)?.$value | titlecase }}</p>
-</div>
+</ng-sidebar-container>

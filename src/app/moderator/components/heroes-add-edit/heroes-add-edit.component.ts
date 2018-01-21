@@ -27,6 +27,7 @@ export class HeroesAddEditComponent implements OnInit {
   user;
   approved;
   rejected;
+  sources = [];
 
   constructor(
     private router: Router,
@@ -40,6 +41,9 @@ export class HeroesAddEditComponent implements OnInit {
   ) {
     this.heroId = this.route.snapshot.params["id"];
     if (this.heroId) {
+      this.heroService
+        .getSubmission(this.heroId, Status.submissions)
+        .subscribe(submission => (this.sources = submission.sources));
       this.heroService.get(this.heroId, Status.submissions).subscribe(hero => {
         this.hero = hero;
         this.form.controls.name.setValue(this.hero.name),
@@ -72,8 +76,12 @@ export class HeroesAddEditComponent implements OnInit {
 
   ngOnInit() {}
 
+  addNewSource(source) {
+    if (source) this.sources.push(source);
+  }
+
   approve(input) {
-    this.submissionFactory.formContentFormat(input);
+    this.submissionFactory.formContentFormat(input, this.sources);
     let submission = (this.submissionFactory as any).submission;
     this.postsService.action(submission, Status.approved);
 
@@ -88,7 +96,7 @@ export class HeroesAddEditComponent implements OnInit {
     this.modalService.open(content).result.then(
       result => {
         if (result === "yes") {
-          this.submissionFactory.formContentFormat(input);
+          this.submissionFactory.formContentFormat(input, this.sources);
           let submission = (this.submissionFactory as any).submission;
           this.postsService.action(submission, Status.rejected);
 

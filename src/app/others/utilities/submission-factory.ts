@@ -13,7 +13,7 @@ export class SubmissionFactory {
     userService.getUser().subscribe(user => (this.user = user));
   }
 
-  public formContentFormat(input) {
+  public formContentFormat(input,sources) {
     let countryAndCode = input.country as string;
     let getCode = countryAndCode.slice(0, countryAndCode.indexOf(","));
     let getCountry = countryAndCode.substr(
@@ -27,6 +27,7 @@ export class SubmissionFactory {
       country: getCountry,
       code: getCode
     });
+    this.submission.sources = sources;
     this.submission.hero = contentFormat;
     this.submission.submittedBy = this.user.displayName;
 

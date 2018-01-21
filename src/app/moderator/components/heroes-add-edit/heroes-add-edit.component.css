@@ -21,6 +21,27 @@
   padding-top: 20px;
 }
 
+.sourcesRef {
+  margin-bottom: .5%;
+}
+
+.sourcesRefButton {
+  cursor: pointer;
+}
+
+.includeButton {
+  cursor: pointer;
+  margin: 0 0 1% 2%;
+}
+
+div>input.sourceRef {
+  margin-bottom: 1%;
+}
+
+ul {
+  list-style: none;
+}
+
 
 /* .card{
     height: 400px;
