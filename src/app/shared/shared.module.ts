@@ -21,7 +21,6 @@ import { Submission } from "./models/submission";
 import { SubmissionDto } from "./models/submission";
 import { Hero } from "./models/hero";
 import { QuillModule } from "ngx-quill";
-import { SidebarModule } from "ng-sidebar";
 import { SubmissionFactory } from "../others/utilities/submission-factory";
 
 @NgModule({
@@ -35,7 +34,6 @@ import { SubmissionFactory } from "../others/utilities/submission-factory";
     NgbModule.forRoot(),
     MyDatePickerModule,
     QuillModule,
-    SidebarModule.forRoot(),
     RouterModule.forChild([
       {
         path: "article-form",
@@ -64,7 +62,6 @@ import { SubmissionFactory } from "../others/utilities/submission-factory";
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     QuillModule,
-    SidebarModule.forRoot().ngModule,
     MyDatePickerModule,
     SanitizeHtmlPipe
   ]

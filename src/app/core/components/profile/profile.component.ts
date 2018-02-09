@@ -3,14 +3,26 @@ import { PostsService } from "./../../../shared/services/posts.service";
 import { Hero } from "./../../../shared/models/hero";
 import { HeroService } from "./../../../shared/services/hero.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, style, trigger, state, transition, animate } from "@angular/core";
 import "rxjs/add/operator/take";
 import { Status } from "../../../shared/enums/status";
 
 @Component({
   selector: "profile",
   templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.css"]
+  styleUrls: ["./profile.component.css"],
+  animations: [
+    trigger("slideInOut",[
+      state("in",style({
+        transform: "translate3d(0,0,0)"
+      })),
+      state("out",style({
+        transform: "translate3d(100%, 0, 0)"
+      })),
+      transition("in => out", animate("400ms ease-in-out")),
+      transition("out => in", animate("400ms ease-in-out"))
+    ])
+  ]
 })
 export class ProfileComponent {
   hero: Hero;
@@ -18,6 +30,7 @@ export class ProfileComponent {
   user;
   submission: Submission;
   _opened: boolean = false;
+  toggleState = "out";
 
   constructor(
     private router: Router,
@@ -41,5 +54,9 @@ export class ProfileComponent {
 
    _toggleOpened(): void {
     this._opened = !this._opened;
+  }
+
+  toggleSidebar() {
+    this.toggleState = this.toggleState === "out" ? "in" : "out";
   }
 }

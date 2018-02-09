@@ -1,20 +1,4 @@
-<ng-sidebar-container>
-  <ng-sidebar [(opened)]="_opened" 
-      position="right" 
-      showBackdrop="true"
-      closeOnClickBackdrop="true"
-      closeOnClickOutside="true"
-      keyClose="true">
 
-        <button type="button" class="btn btn-secondary btn-sm" (click)="_toggleOpened()">Close</button>
-    <h3>Sources & References</h3>
-    <hr>
-    <div class="sources-list">
-        <ol>
-            <li *ngFor="let source of submission?.sources" >{{source}}</li>
-        </ol>
-    </div>
-  </ng-sidebar>
   <div ng-sidebar-content>
     <div class="container">
       <div class="row">
@@ -42,10 +26,15 @@
       </div>
       <hr/>
       <span>Submitted by: {{(user | async)?.$value | titlecase }}</span>
-      <span (click)="_toggleOpened()" class="float-right sources-ref">
+      <span (click)="toggleSidebar()" class="float-right sources-ref">
         Sources and References
         <i class="fa fa-arrow-right" aria-hidden="true"></i>
       </span>
+      <!-- <span (click)="_toggleOpened()" class="float-right sources-ref">
+        Sources and References
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </span> -->
     </div>
   </div>
-</ng-sidebar-container>
+
+<sidebar [submission]="submission" (toggle)="toggleSidebar()" [@slideInOut]="toggleState"></sidebar>

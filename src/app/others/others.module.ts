@@ -16,6 +16,7 @@ import { CustomTitleCasePipe } from './pipes/custom-titlecase.pipe';
 import { Submission } from '../shared/models/submission';
 import { UserService } from '../shared/services/user.service';
 import { Hero } from '../shared/models/hero';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   imports: [
@@ -34,14 +35,15 @@ import { Hero } from '../shared/models/hero';
     FileValidator,
     FileTypeValidator,
     RoundPipe,
-    CustomTitleCasePipe],
+    CustomTitleCasePipe,
+    SidebarComponent],
   exports: [
     TinyMceComponent, 
     CloseMenuDirective, 
     FileValueAccessor,
     FileValidator,
     RoundPipe,
-    CustomTitleCasePipe],
+    CustomTitleCasePipe,SidebarComponent],
     providers: [Hero, SubmissionDto,Submission, UserService]
 })
 export class OthersModule { }

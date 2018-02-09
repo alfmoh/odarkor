@@ -9,12 +9,14 @@ import { LoginComponent } from './components/login/login.component';
 import { PostComponent } from './components/post/post.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuardService } from '../shared/services/auth-guard.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     OthersModule,
+    BrowserAnimationsModule,
     RouterModule.forChild([
       { path: "", component: HomeComponent },
       { path: "login", component: LoginComponent },
