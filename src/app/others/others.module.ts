@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FaqComponent } from './components/faq/faq.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { TinyMceComponent } from './utilities/components/tinymce.component';
 import { CloseMenuDirective } from './directives/closemenu.directive';
 import { FileValueAccessor } from './directives/filevalueaccessor.directive';
 import { FileValidator } from './directives/filevalidator.directive';
@@ -29,7 +28,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   declarations: [
     FaqComponent,
     NotfoundComponent,
-    TinyMceComponent,
     CloseMenuDirective,
     FileValueAccessor,
     FileValidator,
@@ -38,7 +36,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     CustomTitleCasePipe,
     SidebarComponent],
   exports: [
-    TinyMceComponent, 
     CloseMenuDirective, 
     FileValueAccessor,
     FileValidator,

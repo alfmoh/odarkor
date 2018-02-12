@@ -1,6 +1,5 @@
 import { SubmissionFactory } from "../../../others/utilities/submission-factory";
 import { Status } from "./../../../shared/enums/status";
-import { Submission } from "./../../../shared/models/submission";
 import { Router, ActivatedRoute } from "@angular/router";
 import { HeroService } from "../../../shared/services/hero.service";
 import { Component, OnInit } from "@angular/core";
@@ -98,8 +97,10 @@ export class HeroesAddEditComponent implements OnInit {
     this.modalService.open(content).result.then(
       result => {
         if (result === "yes") {
-          this.submissionFactory.formContentFormat(input, this.sources);
-          let submission = (this.submissionFactory as any).submission;
+          let submission = this.submissionFactory.formContentFormat(
+            input,
+            this.sources
+          );
           this.postsService.action(submission, Status.rejected);
 
           this.rejected = true;
