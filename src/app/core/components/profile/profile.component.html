@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card">
-            <img class="card-img-top" [src]="hero?.imageUrl" alt="Card image cap">
+            <img class="card-img-top" [src]="hero?.imageUrl" alt={{hero?.name}}>
             <div class="card-body">
               <h4 class="card-title">{{hero?.name | titlecase }}</h4>
               <p class="card-text">{{hero?.knownFor | customTitleCase }}</p>

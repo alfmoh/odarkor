@@ -38,7 +38,7 @@
       </ng-template>
       <li ngbDropdown *ngIf="user$ | async as user; else anonymousUser" class="nav-item dropdown">
         <a
-        ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+        ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" aria-haspopup="true"
           aria-expanded="false">{{user.displayName}}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a

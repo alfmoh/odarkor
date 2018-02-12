@@ -1,15 +1,18 @@
-
-.nav-link{
+.nav-link {
     cursor: pointer;
 }
+
 .navbar-brand {
     font-family: 'Roboto Slab', serif;
     font-size: 32px;
 }
 
-@media (max-width: 768px) and (max-width: 980px){
+@media (max-width: 768px) and (max-width: 980px) {
     .navbar-brand {
         font-size: 22px;
     }
 }
 
+.dropdown-item {
+    cursor: pointer;
+}
