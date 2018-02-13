@@ -10,25 +10,17 @@
 
   <div #menu class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a 
-        closeMenu
-        [menu]="menu"
-        class="nav-link" [routerLink]="['/']" >Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
       <li class="nav-item">
         <a
         closeMenu
         [menu]="menu"
-        class="nav-link" routerLink="/faq" >Faq</a>
+        class="nav-link" routerLink="/about" >About</a>
       </li>           
       <li class="nav-item">
         <a
         closeMenu
         [menu]="menu"
-        class="nav-link" [routerLink]="['/article-form']">Submit Article</a>
+        class="nav-link" [routerLink]="['/article-form']"><span class="submit">Submit</span></a>
       </li>
       <ng-template #anonymousUser >
         <li
@@ -39,7 +31,7 @@
       <li ngbDropdown *ngIf="user$ | async as user; else anonymousUser" class="nav-item dropdown">
         <a
         ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" aria-haspopup="true"
-          aria-expanded="false">{{user.displayName}}</a>
+          aria-expanded="false">{{user.displayName | customTitleCase}}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a
           closeMenu

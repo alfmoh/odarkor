@@ -4,7 +4,7 @@ import { SharedModule } from './../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FaqComponent } from './components/faq/faq.component';
+import { AboutComponent } from './components/about/about.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { CloseMenuDirective } from './directives/closemenu.directive';
 import { FileValueAccessor } from './directives/filevalueaccessor.directive';
@@ -22,11 +22,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: "faq", component: FaqComponent }
+      { path: "about", component: AboutComponent }
     ])
   ],
   declarations: [
-    FaqComponent,
+    AboutComponent,
     NotfoundComponent,
     CloseMenuDirective,
     FileValueAccessor,

@@ -16,3 +16,11 @@
 .dropdown-item {
     cursor: pointer;
 }
+
+.dropdown-item:hover {
+    background-color: bisque;
+}
+
+.submit {
+    font-weight: bold;
+}
