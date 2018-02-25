@@ -1,65 +1,31 @@
-.all {
-  position: relative;
-  padding-left: 8.5%;
+a:link, a:hover, a:active {
+  text-decoration: none;
 }
 
-/* @media screen and (orientation: landscape){
-  .all {
-    padding-left: 24%;
-  }
-} */
-
-@media (max-width: 767px){
-  .all {
-    padding-left: 10.5%;
-  }
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  text-align: center;
 }
-
-/* @media (max-width: 768px) and (max-width: 980px){
-  .all {
-    padding-left: 17.5%;
-  }
-} */
 
 .module {
-  width: 300px;
-  height: 160px;
-  position: relative;
-  float: left;
-  background-color: white;
+  margin: 10px 20px;
+  padding: 5px 0;
+  flex: 1 0 25%;
 }
 
 .module h2 {
   font-family: 'Dosis', sans-serif;
-  font-weight: 900;
+  font-weight: 500;
   color: black;
   text-transform: uppercase;
-  margin: 0;
-  position: relative;
-  left: 50%;
-  font-size: 2rem;
-  transform: translate(-50%, -50%);
 }
 
-.desc p {
+.knownFor p {
   font-family: 'Vollkorn', serif;
-  left: 20px;
   color: black;
-  margin: 0;
   text-align: center;
-}
-
-.heading {
-  text-align: center;
-  /* padding-right: 5px; */
-}
-
-.top-space {
-  padding-top: 50px;
-}
-
-.routing {
-  text-decoration: none;
 }
 
 .country {
@@ -68,4 +34,9 @@
   font-weight: 100;
   font-size: 10px;
   top: -15px;
+}
+
+.hideSquad {
+  content: "";
+  visibility: hidden;
 }
