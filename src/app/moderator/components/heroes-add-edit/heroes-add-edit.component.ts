@@ -89,6 +89,10 @@ export class HeroesAddEditComponent implements OnInit {
     this.approved = true;
 
     setTimeout(() => {
+      this.heroService.deletePostAfterAcceptance(
+        this.heroId,
+        Status.submissions
+      );
       this.router.navigate(["/"]);
     }, 3000);
   }

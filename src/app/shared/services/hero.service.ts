@@ -16,4 +16,8 @@ export class HeroService {
   getSubmission(heroId, status) {
     return this.db.object(`/${status}/${heroId}`);
   }
+
+  deletePostAfterAcceptance(heroId, status) {
+    return this.db.object(`/${status}/${heroId}`).remove();
+  }
 }
