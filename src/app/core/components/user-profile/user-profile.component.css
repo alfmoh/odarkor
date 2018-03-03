@@ -1,0 +1,22 @@
+.user-articles {
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+select {
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.clear-float {
+    clear: both;
+}
+
+.card {
+    margin-top: 5px;
+}
+
+div.clear-float {
+    text-align: center;
+    /* font-style: italic; */
+}

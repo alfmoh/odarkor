@@ -36,6 +36,10 @@
           <a
           closeMenu
           [menu]="menu"
+          class="dropdown-item"  [routerLink]="['/user-profile']" >My Profile</a>
+          <a
+          closeMenu
+          [menu]="menu"
           class="dropdown-item"  (click)="logout()" >Log Out</a>
           <a
           closeMenu

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <strong>My Profile</strong>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            {{(status == "submissions"? "awaiting approval": status) | titlecase}}:
+            <span class="badge badge-info">
+              {{submittedHeroes.length}}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="user-articles col-md-8">
+      <select (change)="changed($event.target.value)" class="custom-select">
+        <option value="submissions">Awaiting Approval</option>
+        <option selected value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+      </select>
+
+      <ng-template #noContent>
+        <div class="clear-float">No Content Here</div>
+      </ng-template>
+
+      <ul *ngIf="submittedHeroes.length > 0; else noContent" class="list-group clear-float">
+        <li *ngFor="let hero of submittedHeroes" class="list-group-item">
+          {{hero.name}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

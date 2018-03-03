@@ -47,6 +47,7 @@ export class SubmissionFactory {
     this.submission.sources = sources;
     this.submission.hero = hero;
     this.submission.submittedBy = this.user.displayName;
+    this.submission.submittedByUserId = this.user.uid;
 
     return this.submission;
   }

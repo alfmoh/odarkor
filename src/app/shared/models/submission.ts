@@ -20,6 +20,7 @@ export class Submission {
   hero: Hero;
   dateSubmitted;
   submittedBy;
+  submittedByUserId;
   sources;
   image: FileList;
   progress: number;
@@ -28,3 +29,6 @@ export class Submission {
     this.dateSubmitted = new Date(Date.now()).toString();
   }
 }
+
+/* TODO: Refactor submittedBy and 
+submittedByUserId into User class Model */
