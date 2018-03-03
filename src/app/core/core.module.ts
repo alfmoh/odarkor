@@ -22,7 +22,11 @@ import { UserProfileComponent } from "./components/user-profile/user-profile.com
       { path: "", component: HomeComponent },
       { path: "login", component: LoginComponent },
       { path: "profile/:id", component: ProfileComponent },
-      { path: "user-profile", component: UserProfileComponent }
+      {
+        path: "user-profile",
+        component: UserProfileComponent,
+        canActivate: [AuthGuardService]
+      }
     ])
   ],
   declarations: [
