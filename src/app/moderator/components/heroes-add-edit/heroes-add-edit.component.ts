@@ -42,7 +42,13 @@ export class HeroesAddEditComponent implements OnInit {
     if (this.heroId) {
       this.heroService
         .getSubmission(this.heroId, Status.submissions)
-        .subscribe(submission => (this.sources = submission.sources));
+        .subscribe(submission => {
+          this.sources = submission.sources;
+          this.submissionFactory.userDuringModeration.uid =
+            submission.submittedByUserId;
+          this.submissionFactory.userDuringModeration.displayName =
+            submission.submittedBy;
+        });
       this.heroService.get(this.heroId, Status.submissions).subscribe(hero => {
         this.hero = hero;
         this.form.controls.name.setValue(this.hero.name),
@@ -82,7 +88,8 @@ export class HeroesAddEditComponent implements OnInit {
   approve(input) {
     let submission = this.submissionFactory.formContentFormat(
       input,
-      this.sources
+      this.sources,
+      true
     );
     this.postsService.action(submission, Status.approved);
 
@@ -103,13 +110,18 @@ export class HeroesAddEditComponent implements OnInit {
         if (result === "yes") {
           let submission = this.submissionFactory.formContentFormat(
             input,
-            this.sources
+            this.sources,
+            true
           );
           this.postsService.action(submission, Status.rejected);
 
           this.rejected = true;
 
           setTimeout(() => {
+            this.heroService.deletePostAfterAcceptance(
+              this.heroId,
+              Status.submissions
+            );
             this.router.navigate(["/"]);
           }, 3000);
         }

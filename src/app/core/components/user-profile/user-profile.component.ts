@@ -26,7 +26,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user$.subscribe(a => {
-      this.userId = a.uid;
+      if(a != null) this.userId = a.uid;
     });
     this.changed(Status.approved);
   }

@@ -6,6 +6,11 @@ import { Submission } from "../../shared/models/submission";
 export class SubmissionFactory {
   user;
 
+  userDuringModeration = {
+    uid: "",
+    displayName: ""
+  };
+
   constructor(
     private submission: Submission,
     private userService: UserService
@@ -33,7 +38,7 @@ export class SubmissionFactory {
     return { birthDate, deathDate };
   }
 
-  public formContentFormat(input, sources) {
+  public formContentFormat(input, sources, fromModerator = false) {
     let { country, code } = this.retriveCountryAndCode(input);
     let { birthDate, deathDate } = this.retriveBirthDeathDate(input);
 
@@ -46,8 +51,13 @@ export class SubmissionFactory {
     if (input.image) this.submission.image = input.image;
     this.submission.sources = sources;
     this.submission.hero = hero;
-    this.submission.submittedBy = this.user.displayName;
-    this.submission.submittedByUserId = this.user.uid;
+    if (fromModerator) {
+      this.submission.submittedBy = this.userDuringModeration.displayName;
+      this.submission.submittedByUserId = this.userDuringModeration.uid;
+    } else {
+      this.submission.submittedBy = this.user.displayName;
+      this.submission.submittedByUserId = this.user.uid;
+    }
 
     return this.submission;
   }
