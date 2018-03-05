@@ -27,3 +27,7 @@ aside.ng-sidebar {
   width: 40%;
   margin-left: 5px;
 }
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: bisque;
+}

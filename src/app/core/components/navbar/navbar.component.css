@@ -24,3 +24,7 @@
 .submit {
     font-weight: bold;
 }
+
+.navbar-light .navbar-nav .user {
+    font-weight: 500;
+}

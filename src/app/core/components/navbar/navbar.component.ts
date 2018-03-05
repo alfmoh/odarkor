@@ -1,31 +1,78 @@
-import { UserService } from '../../../shared/services/user.service';
-import { AuthService } from '../../../shared/services/auth.service';
-import { Observable } from 'rxjs/Rx';
-import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
-import { User } from '../../../shared/models/user';
+import {
+  Router,
+  ActivatedRoute,
+  ParamMap,
+  RoutesRecognized,
+  NavigationStart,
+  NavigationEnd
+} from "@angular/router";
+import { Status } from "./../../../shared/enums/status";
+import { HeroService } from "./../../../shared/services/hero.service";
+import { UserService } from "../../../shared/services/user.service";
+import { AuthService } from "../../../shared/services/auth.service";
+import { Observable } from "rxjs/Rx";
+import { Component, OnInit } from "@angular/core";
+import * as firebase from "firebase";
+import { User } from "../../../shared/models/user";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/switchMap";
+import "rxjs/add/operator/debounceTime";
+import "rxjs/add/operator/distinctUntilChanged";
+import "rxjs/add/operator/take";
 
 @Component({
-  selector: 'navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: "navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
+  heroes = [];
+  user$: Observable<firebase.User>;
+  appUser$: Observable<User>;
 
-user$ : Observable<firebase.User>;
-appUser$: Observable<User>;
 
-  constructor(private userService: UserService,
-    private auth: AuthService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private heroService: HeroService,
+    private userService: UserService,
+    private auth: AuthService
+  ) {
     this.user$ = userService.getUser();
     this.appUser$ = auth.appUser$;
-   }
-
-  ngOnInit() {
+    this.heroService.getAll(Status.approved).subscribe(heroes => {
+      heroes.forEach(hero => {
+        // console.log(hero)
+        return this.heroes.push(hero);
+      });
+    });
   }
 
-  logout(){
+  ngOnInit() {}
+
+  logout() {
     this.auth.logout();
   }
 
+  submit(input) {
+    let hero = input.value.hero;
+    if (hero) this.router.navigate(["profile", hero.$key]);
+  }
+
+  formatter = (x: any) => x.hero.name;
+
+  search = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .map(
+        term =>
+          term === ""
+            ? []
+            : this.heroes
+                .filter(
+                  v =>
+                    v.hero.name.toLowerCase().indexOf(term.toLowerCase()) > -1
+                )
+                .slice(0, 10)
+      );
 }
