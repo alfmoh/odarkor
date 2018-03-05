@@ -1,26 +1,43 @@
 <div class="container">
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col">Known For</th>
-        <th scope="col">Country</th>
-        <th scope="col">Submitted By</th>
-        <th scope="col">Date Submitted</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let sub of submissions; let i= index ">
-        <td scope="row">{{i + 1}}</td>
-        <td>
-          <a [routerLink]="['add-edit', sub.$key]">{{sub.hero.name}}</a>
-        </td>
-        <td>{{sub.hero.knownFor}}</td>
-        <td>{{sub.hero.country}}</td>
-        <td>{{sub.submittedBy | titlecase }}</td>
-        <td>{{sub.dateSubmitted | date: 'longDate' }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col">
+      <ul class="list-group">
+        <li (click)="unapproved()" 
+          [ngClass]="{'list-group-item-primary':selected =='submissions'}" 
+          class="list-group-item ">Unapproved</li>
+        <li (click)="approved()" 
+          [ngClass]="{'list-group-item-success':selected == 'approved'}" 
+          class="list-group-item">Approved</li>
+        <li (click)="rejected()" 
+          [ngClass]="{'list-group-item-danger':selected == 'rejected'}" 
+          class="list-group-item">Rejected</li>
+      </ul>
+    </div>
+    <div class="col-10">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Name</th>
+            <th scope="col">Known For</th>
+            <th scope="col">Country</th>
+            <th scope="col">Submitted By</th>
+            <th scope="col">Date Submitted</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sub of submissions; let i= index ">
+            <td scope="row">{{i + 1}}</td>
+            <td>
+              <a [routerLink]="['add-edit', selected, sub.$key]">{{sub.hero.name}}</a>
+            </td>
+            <td>{{sub.hero.knownFor}}</td>
+            <td>{{sub.hero.country}}</td>
+            <td>{{sub.submittedBy | titlecase }}</td>
+            <td>{{sub.dateSubmitted | date: 'longDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

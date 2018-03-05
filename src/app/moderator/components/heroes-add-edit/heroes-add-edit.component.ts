@@ -18,6 +18,7 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 })
 export class HeroesAddEditComponent implements OnInit {
   heroId;
+  status;
   hero: Hero;
   form: FormGroup;
   birthDateOptions;
@@ -39,9 +40,10 @@ export class HeroesAddEditComponent implements OnInit {
     timeOptions: TimeOptions
   ) {
     this.heroId = this.route.snapshot.params["id"];
+    this.status = this.route.snapshot.params["status"];
     if (this.heroId) {
       this.heroService
-        .getSubmission(this.heroId, Status.submissions)
+        .getSubmission(this.heroId, this.status)
         .subscribe(submission => {
           this.sources = submission.sources;
           this.submissionFactory.userDuringModeration.uid =
@@ -49,7 +51,7 @@ export class HeroesAddEditComponent implements OnInit {
           this.submissionFactory.userDuringModeration.displayName =
             submission.submittedBy;
         });
-      this.heroService.get(this.heroId, Status.submissions).subscribe(hero => {
+      this.heroService.get(this.heroId, this.status).subscribe(hero => {
         this.hero = hero;
         this.form.controls.name.setValue(this.hero.name),
           this.form.controls.country.setValue(
@@ -98,7 +100,7 @@ export class HeroesAddEditComponent implements OnInit {
     setTimeout(() => {
       this.heroService.deletePostAfterAcceptance(
         this.heroId,
-        Status.submissions
+        Status.unapproved
       );
       this.router.navigate(["/"]);
     }, 3000);
@@ -120,7 +122,7 @@ export class HeroesAddEditComponent implements OnInit {
           setTimeout(() => {
             this.heroService.deletePostAfterAcceptance(
               this.heroId,
-              Status.submissions
+              Status.unapproved
             );
             this.router.navigate(["/"]);
           }, 3000);
