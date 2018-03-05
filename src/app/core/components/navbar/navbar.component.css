@@ -28,3 +28,9 @@
 .navbar-light .navbar-nav .user {
     font-weight: 500;
 }
+
+input::placeholder {
+    font-style: italic;
+    opacity: 0.30;
+    text-align: center;
+}

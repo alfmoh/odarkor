@@ -17,7 +17,7 @@ export class HeroService {
     return this.db.object(`/${status}/${heroId}`);
   }
 
-  deletePostAfterAcceptance(heroId, status) {
+  deletePostAfterStatusChanged(heroId, status) {
     return this.db.object(`/${status}/${heroId}`).remove();
   }
 }

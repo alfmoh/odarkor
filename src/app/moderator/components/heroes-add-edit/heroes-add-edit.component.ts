@@ -98,10 +98,17 @@ export class HeroesAddEditComponent implements OnInit {
     this.approved = true;
 
     setTimeout(() => {
-      this.heroService.deletePostAfterAcceptance(
+      this.heroService.deletePostAfterStatusChanged(
         this.heroId,
         Status.unapproved
       );
+      let getHero = this.heroService.get(this.heroId, Status.rejected);
+      if (getHero) {
+        this.heroService.deletePostAfterStatusChanged(
+          this.heroId,
+          Status.rejected
+        );
+      }
       this.router.navigate(["/"]);
     }, 3000);
   }
@@ -120,10 +127,17 @@ export class HeroesAddEditComponent implements OnInit {
           this.rejected = true;
 
           setTimeout(() => {
-            this.heroService.deletePostAfterAcceptance(
+            this.heroService.deletePostAfterStatusChanged(
               this.heroId,
               Status.unapproved
             );
+            let getHero = this.heroService.get(this.heroId, Status.approved);
+            if (getHero) {
+              this.heroService.deletePostAfterStatusChanged(
+                this.heroId,
+                Status.approved
+              );
+            }
             this.router.navigate(["/"]);
           }, 3000);
         }
@@ -132,3 +146,4 @@ export class HeroesAddEditComponent implements OnInit {
     );
   }
 }
+//TODO: Refactor code
