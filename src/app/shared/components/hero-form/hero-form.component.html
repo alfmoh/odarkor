@@ -147,8 +147,8 @@
               <em>**At least one source or reference is needed.**</em>
       </div>
 
-      <button [disabled]="!selectedFiles || sources.length == 0 || form.invalid" 
-        type="submit" class="btn btn-success">Submit</button>
+      <button [disabled]="!selectedFiles || sources.length == 0 || form.invalid || saving" 
+        type="submit" class="btn btn-success">{{saving ? 'Saving...' : 'Submit'}}</button>
     </div>
   </div>
 </form>

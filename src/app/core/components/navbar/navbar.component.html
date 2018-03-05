@@ -3,7 +3,11 @@
   closeMenu
   [menu]="menu"
   class="navbar-brand" [routerLink]="['/']" >Odarkor</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+  <button 
+    class="navbar-toggler" 
+    type="button" data-toggle="collapse" 
+    data-target="#navbarsExampleDefault" 
+    aria-controls="navbarsExampleDefault"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -29,12 +33,16 @@
       <a [ngStyle]="{'color':'black'}" [routerLink]="['profile',r.$key]">{{ r.hero.name}}</a>
     </ng-template>
 
-    <form #f="ngForm" novalidate (keyup.enter)="submit(f)" (ngSubmit)="submit(f)" class="form-inline my-2 my-lg-0 mr-auto justify-content-center">
+    <form #f="ngForm" 
+      novalidate (click)="submit(f)" 
+      (keyup.enter)="submit(f)" 
+      (ngSubmit)="submit(f)" 
+      class="form-inline my-2 my-lg-0 mr-auto justify-content-center">
       <input
         name="hero"
         ngModel #hero="ngModel" 
         id="typeahead-basic" 
-        type="text"
+        type="search"
         placeholder="Search heroes..." 
         class="form-control mr-sm-2" 
         [resultTemplate]="rt" [inputFormatter]="formatter" [ngbTypeahead]="search"/>

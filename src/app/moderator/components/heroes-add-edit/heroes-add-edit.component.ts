@@ -28,6 +28,7 @@ export class HeroesAddEditComponent implements OnInit {
   approved;
   rejected;
   sources = [];
+  loading = false;
 
   constructor(
     private router: Router,
@@ -88,6 +89,7 @@ export class HeroesAddEditComponent implements OnInit {
   }
 
   approve(input) {
+    this.loading = true;
     let submission = this.submissionFactory.formContentFormat(
       input,
       this.sources,
@@ -117,6 +119,7 @@ export class HeroesAddEditComponent implements OnInit {
     this.modalService.open(content).result.then(
       result => {
         if (result === "yes") {
+          this.loading = true;
           let submission = this.submissionFactory.formContentFormat(
             input,
             this.sources,

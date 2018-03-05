@@ -10,6 +10,14 @@ a:link, a:hover, a:active {
   margin: 20px 0;
 }
 
+.module:hover {
+  transform: scale(1.018);
+  transition-duration: 600ms;
+  border: 1px solid black;
+  box-shadow: -12px 10px 13px -7px rgba(0, 0, 0, 0.22);
+  transition-timing-function: ease-out;
+}
+
 .module h2 {
   font-family: 'Dosis', sans-serif;
   font-weight: 500;
@@ -35,14 +43,13 @@ a:link, a:hover, a:active {
   visibility: hidden;
 }
 
-@media only screen and (min-width : 480px) {
+@media only screen and (min-width: 480px) {
   .container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
     text-align: center;
   }
-  
   .module {
     margin: 10px 20px;
     padding: 5px 0;

@@ -34,3 +34,7 @@ input::placeholder {
     opacity: 0.30;
     text-align: center;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}

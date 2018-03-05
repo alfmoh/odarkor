@@ -25,6 +25,7 @@ export class HeroFormComponent {
   deathDateOptions;
   achievementText;
   countries: any = countries;
+  saving = false;
 
   currentUpload: Submission;
   selectedFiles: FileList;
@@ -74,6 +75,7 @@ export class HeroFormComponent {
   }
 
   submit(input, modalBoxContent) {
+    this.saving = true;
     this.submission = this.submissionFactory.formContentFormat(
       input,
       this.sources
