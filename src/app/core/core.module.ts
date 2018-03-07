@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { UserProfileComponent } from "./components/user-profile/user-profile.component";
 import { FormsModule } from "@angular/forms";
 import { CustomRouteReuseStrategy } from "./components/navbar/CustomReuseRouteStrategy";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { CustomRouteReuseStrategy } from "./components/navbar/CustomReuseRouteSt
     LoginComponent,
     PostComponent,
     ProfileComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FooterComponent
   ],
   exports: [NavbarComponent],
   providers: [

@@ -7,9 +7,23 @@
     font-size: 32px;
 }
 
+.fa-heart, .fa-edit {
+    visibility: hidden;
+    pointer-events: none;
+}
+
 @media (max-width: 768px) and (max-width: 980px) {
     .navbar-brand {
         font-size: 22px;
+    }
+    .fa-heart, .fa-edit {
+        visibility: visible;
+    }
+    .fa-heart {
+        color: red;
+    }
+    .fa-edit {
+        color: rgb(39, 99, 99);
     }
 }
 

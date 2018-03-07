@@ -1,0 +1,59 @@
+.moderate {
+    float: left;
+    margin-left: 30px;
+    color: #2F4F4F;
+    font-size: 25px;
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+.area {
+    border-top: 1px solid #f2f2f2;
+}
+
+.support {
+    float: right;
+    margin-right: 30px;
+    color: rgb(255, 179, 179);
+    font-size: 25px;
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+.moderate:hover {
+    color: rgb(39, 99, 99);
+    transform: scale(1.07);
+    animation-duration: 500ms;
+    opacity: 1;
+}
+
+.support:hover {
+    color: red;
+    transform: scale(1.07);
+    animation-duration: 500ms;
+    opacity: 1;
+}
+
+.support h6 {
+    cursor: default;
+}
+
+.dropup .dropdown-toggle:empty::after {
+    visibility: hidden;
+}
+
+.dropdown-item {
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background-color: bisque;
+}
+
+@media only screen and (max-width:480px){
+    .area {
+        visibility: hidden;
+    }
+
+    
+}

@@ -49,16 +49,20 @@
     </form>
 
       <ul class="navbar-nav mr-auto">
+
         <ng-template #anonymousUser >
           <li
           closeMenu
           [menu]="menu"
           class="nav-link my-2 my-sm-0 mr-sm-2" [routerLink]="['/login']">Login</li>
         </ng-template>
+
         <li ngbDropdown *ngIf="user$ | async as user; else anonymousUser" class="nav-item dropdown">
           <a
           ngbDropdownToggle class="nav-link dropdown-toggle user" id="dropdown01" aria-haspopup="true"
             aria-expanded="false">{{user.displayName | customTitleCase}}</a>
+            
+            
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
             <a
             closeMenu
@@ -73,7 +77,11 @@
             [menu]="menu"
             class="dropdown-item"  (click)="logout()" >Log Out</a>
           </div>
-        </li>  
+        </li>
+
+        <li><i title="Support" class="fa far fa-heart fa-large"></i></li>
+        <li><i title="Become a Moderator!" class="fa fas fa-edit fa-large"></i></li>
+
       </ul>
 
   </div>
