@@ -117,8 +117,8 @@
             </div>
             <em>**More sources or references can be added**</em>
             <div class="buttons">
-                <button class="btn btn-danger" [hidden]='loading' type="button" (click)="open(modalBoxContent,form.value)">Reject</button>
-                <button class="btn btn-success" [hidden]='loading' type="submit">Accept</button>
+                <button class="btn btn-danger" [hidden]='loading || status == "rejected"' type="button" (click)="open(modalBoxContent,form.value)">Reject</button>
+                <button class="btn btn-success" [hidden]='loading || status == "approved"' type="submit">Accept</button>
 
                 <button class="btn btn-success" [disabled]='true' [hidden]='!loading' type="submit">Loading...</button>
             </div>
