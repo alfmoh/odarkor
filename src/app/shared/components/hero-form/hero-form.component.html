@@ -76,10 +76,17 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="knownFor">Known For</label>
+          <label for="knownFor">Well Known For</label>
           <input formControlName="knownFor" id="knownFor" class="form-control" type="text">
-          <div *ngIf="form.get('knownFor').touched && form.get('knownFor').invalid">
-            <div class="error-message">Known attributes are required.</div>
+          <div *ngIf="form.get('knownFor').touched && form.get('knownFor').invalid">          
+            <div *ngIf="form.get('knownFor').hasError('required')">
+              <div class="error-message">Well known attribute is required.</div>
+            </div>
+            <div *ngIf="form.get('knownFor').hasError('maxlength')">
+              <div class="error-message">
+                A maximum of {{form.get('knownFor').errors.maxlength.requiredLength}} characters are allowed.
+              </div>
+            </div>
           </div>
         </div>
         <div *ngIf="currentUpload">

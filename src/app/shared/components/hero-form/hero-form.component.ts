@@ -44,7 +44,7 @@ export class HeroFormComponent {
     this.form = fb.group({
       name: ["", Validators.required],
       country: ["", Validators.required],
-      knownFor: ["", Validators.required],
+      knownFor: ["", [Validators.required, Validators.maxLength(35)]],
       // achievementDetails: ["", [Validators.required, Validators.minLength(700)]],
       achievementDetails: ["", [Validators.required]],
       image: ["", [FileValidator.validate, FileTypeValidator.validate]],

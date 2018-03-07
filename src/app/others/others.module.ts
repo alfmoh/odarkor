@@ -16,6 +16,7 @@ import { Submission } from '../shared/models/submission';
 import { UserService } from '../shared/services/user.service';
 import { Hero } from '../shared/models/hero';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NameInitialsPipe } from './pipes/name-initials.pipe';
 
 @NgModule({
   imports: [
@@ -34,12 +35,14 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     FileTypeValidator,
     RoundPipe,
     CustomTitleCasePipe,
+    NameInitialsPipe,
     SidebarComponent],
   exports: [
     CloseMenuDirective, 
     FileValueAccessor,
     FileValidator,
     RoundPipe,
+    NameInitialsPipe,
     CustomTitleCasePipe,SidebarComponent],
     providers: [Hero, SubmissionDto,Submission, UserService]
 })
