@@ -9,6 +9,8 @@ i.fa {
 .in-view {
     animation-name: fade-in;
     animation-duration: 1.2s;
+    background-color: #f0ffff;
+    animation-timing-function: ease-in-out;
 }
 
 h5 {

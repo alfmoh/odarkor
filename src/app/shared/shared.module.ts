@@ -1,3 +1,4 @@
+import { PreventUnsavedChanges } from './services/prevent-unsaved-changes';
 import { OthersModule } from "./../others/others.module";
 import { TimeOptions } from "./../others/utilities/time-options";
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -38,7 +39,8 @@ import { SubmissionFactory } from "../others/utilities/submission-factory";
       {
         path: "article-form",
         component: HeroFormComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        canDeactivate: [PreventUnsavedChanges]
       }
     ])
   ],
@@ -54,7 +56,8 @@ import { SubmissionFactory } from "../others/utilities/submission-factory";
     Submission,
     Hero,
     UserService,
-    SubmissionFactory
+    SubmissionFactory,
+    PreventUnsavedChanges,
   ],
   exports: [
     HeroFormComponent,
