@@ -16,6 +16,7 @@ import { UserService } from "../shared/services/user.service";
 import { Hero } from "../shared/models/hero";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { NameInitialsPipe } from "./pipes/name-initials.pipe";
+import { ZippyComponent } from "./components/zippy/zippy.component";
 
 @NgModule({
   imports: [CommonModule, FormsModule],
@@ -28,7 +29,8 @@ import { NameInitialsPipe } from "./pipes/name-initials.pipe";
     RoundPipe,
     CustomTitleCasePipe,
     NameInitialsPipe,
-    SidebarComponent
+    SidebarComponent,
+    ZippyComponent
   ],
   exports: [
     CloseMenuDirective,
@@ -37,7 +39,8 @@ import { NameInitialsPipe } from "./pipes/name-initials.pipe";
     RoundPipe,
     NameInitialsPipe,
     CustomTitleCasePipe,
-    SidebarComponent
+    SidebarComponent,
+    ZippyComponent
   ],
   providers: [Hero, SubmissionDto, Submission, UserService]
 })

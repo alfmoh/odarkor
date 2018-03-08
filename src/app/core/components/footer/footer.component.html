@@ -4,7 +4,11 @@
       <div ngbDropdown placement="top-left" class="moderate">
         <i ngbDropdownToggle class="fa fas fa-edit fa-large"></i>
         <div ngbDropdownMenu aria-labelledby="moderator-toggle">
-          <h6 class="dropdown-header">Become a Moderator</h6>
+          <h6 class="dropdown-header">
+            <a [routerLink]="['/about']">
+              <span class="moderate-text">Become a Moderator</span>
+            </a>
+          </h6>
         </div>
       </div>
       <div ngbDropdown placement="top-right" class="support">
@@ -13,6 +17,11 @@
           <h6 class="dropdown-header">Support</h6>
           <a class="dropdown-item">Donate</a>
           <a href="https://github.com" target="_blank" class="dropdown-item">Code</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://twitter.com/alfieedo" target="_blank">
+            Made with
+            <i class="fa fa-heart fa-o made-with"></i> by
+          </a>
         </div>
       </div>
     </div>

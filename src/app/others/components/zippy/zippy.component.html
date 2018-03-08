@@ -1,0 +1,11 @@
+<div class="card">
+  <h5 class="card-header" (click)="hide = !hide">
+    {{title}}
+    <i class="fa fas" [ngClass]="{'fa-chevron-down': hide, 'fa-chevron-up': !hide}"></i>
+  </h5>
+  <div class="card-body" [ngClass]="{'in-view': !hide}" [hidden]="hide">
+    <p class="card-text">
+      <ng-content></ng-content>
+    </p>
+  </div>
+</div>

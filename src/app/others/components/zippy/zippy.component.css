@@ -1,0 +1,28 @@
+.card-header {
+    cursor: pointer;
+}
+
+i.fa {
+    float: right;
+}
+
+.in-view {
+    animation-name: fade-in;
+    animation-duration: 1.2s;
+}
+
+h5 {
+    font-family: 'Asap', serif;
+    font-weight: 500;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        padding: 0.25rem;
+    }
+    100% {
+        opacity: 1;
+        padding: 1.25rem;
+    }
+}
