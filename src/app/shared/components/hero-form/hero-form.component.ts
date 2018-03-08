@@ -44,6 +44,7 @@ export class HeroFormComponent {
     this.form = fb.group({
       name: ["", Validators.required],
       country: ["", Validators.required],
+      gender: ["male", Validators.required],
       knownFor: ["", [Validators.required, Validators.maxLength(35)]],
       // achievementDetails: ["", [Validators.required, Validators.minLength(700)]],
       achievementDetails: ["", [Validators.required]],
@@ -80,7 +81,6 @@ export class HeroFormComponent {
       input,
       this.sources
     );
-
     this.upload(this.submission, modalBoxContent);
   }
 }

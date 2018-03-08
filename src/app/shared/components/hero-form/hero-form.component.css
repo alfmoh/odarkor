@@ -26,6 +26,14 @@
   margin: 0 0 1% 2%;
 }
 
+.gender {
+  margin-right: 15px;
+}
+
+.female {
+  margin-left: 15px;
+}
+
 div>input.sourceRef {
   margin-bottom: 1%;
 }

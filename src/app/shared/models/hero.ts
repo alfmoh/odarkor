@@ -1,6 +1,7 @@
 
 export class Hero {
     name: string;
+    gender:string;
     country: string;
     code: string;
     knownFor: string;
