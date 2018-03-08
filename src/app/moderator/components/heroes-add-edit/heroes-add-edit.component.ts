@@ -111,8 +111,8 @@ export class HeroesAddEditComponent implements OnInit {
           Status.rejected
         );
       }
-      this.router.navigate(["/"]);
-    }, 3000);
+      this.router.navigate(["/heroes/submissions"]);
+    }, 1500);
   }
 
   open(content, input) {
@@ -141,8 +141,8 @@ export class HeroesAddEditComponent implements OnInit {
                 Status.approved
               );
             }
-            this.router.navigate(["/"]);
-          }, 3000);
+            this.router.navigate(["/heroes/submissions"]);
+          }, 1500);
         }
       },
       reason => {}

@@ -1,3 +1,4 @@
+import { AboutComponent } from "./components/about/about.component";
 import { OthersModule } from "./../others/others.module";
 import { SharedModule } from "./../shared/shared.module";
 import { RouterModule, RouteReuseStrategy } from "@angular/router";
@@ -13,7 +14,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { UserProfileComponent } from "./components/user-profile/user-profile.component";
 import { FormsModule } from "@angular/forms";
 import { CustomRouteReuseStrategy } from "./components/navbar/CustomReuseRouteStrategy";
-import { FooterComponent } from './components/footer/footer.component';
+import { FooterComponent } from "./components/footer/footer.component";
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { FooterComponent } from './components/footer/footer.component';
       { path: "", component: HomeComponent },
       { path: "login", component: LoginComponent },
       { path: "profile/:id", component: ProfileComponent },
+      { path: "about", component: AboutComponent },
       {
         path: "user-profile",
         component: UserProfileComponent,
@@ -40,6 +42,7 @@ import { FooterComponent } from './components/footer/footer.component';
     PostComponent,
     ProfileComponent,
     UserProfileComponent,
+    AboutComponent,
     FooterComponent
   ],
   exports: [NavbarComponent],
