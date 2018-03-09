@@ -1,3 +1,4 @@
+import { Constants } from './constants';
 import { Injectable } from "@angular/core";
 import { UserService } from "./../../shared/services/user.service";
 import { Submission } from "../../shared/models/submission";
@@ -41,6 +42,8 @@ export class SubmissionFactory {
   public formContentFormat(input, sources, fromModerator = false) {
     let { country, code } = this.retriveCountryAndCode(input);
     let { birthDate, deathDate } = this.retriveBirthDeathDate(input);
+
+    if(!input.imageUrl) input.imageUrl = Constants.defaultImageUrl;
 
     let hero = Object.assign({}, input, {
       birthDate,

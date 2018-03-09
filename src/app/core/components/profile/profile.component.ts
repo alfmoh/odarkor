@@ -52,10 +52,6 @@ export class ProfileComponent {
     this.user = postService.getSubmittedByUser(this.id);
   }
 
-   _toggleOpened(): void {
-    this._opened = !this._opened;
-  }
-
   toggleSidebar() {
     this.toggleState = this.toggleState === "out" ? "in" : "out";
   }

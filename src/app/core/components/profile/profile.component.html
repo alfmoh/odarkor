@@ -1,40 +1,47 @@
+<ng-template #unknownBirthDate>
+  <li class="list-group-item">Born: Unknown</li>
+</ng-template>
+<ng-template #unknownDeathDate>
+  <li class="list-group-item">Died: Unknown</li>
+</ng-template>
 
-  <div ng-sidebar-content>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <img class="card-img-top" [src]="hero?.imageUrl" alt={{hero?.name}}>
-            <div class="card-body">
-              <h4 class="card-title">{{hero?.name | titlecase }}</h4>
-              <p class="card-text">{{hero?.knownFor | customTitleCase }}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Country: {{hero?.country}}</li>
-              <li class="list-group-item">Born: {{hero?.birthDate | date:'longDate'}}</li>
-              <li class="list-group-item">Died: {{hero?.deathDate| date : 'longDate'}}</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col">
-          <div class="name">{{hero?.name | titlecase }}</div>
-          <br>
-          <div [innerHTML]="hero?.achievementDetails | sanitizeHtml ">
 
+<div ng-sidebar-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" [src]="hero?.imageUrl" alt={{hero?.name}}>
+          <div class="card-body">
+            <h4 class="card-title">{{hero?.name | titlecase }}</h4>
+            <p class="card-text">{{hero?.knownFor | customTitleCase }}</p>
           </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Country: {{hero?.country}}</li>
+            <li class="list-group-item" *ngIf="hero?.birthDate !== '01/01/1000'; else unknownBirthDate">
+              Born: {{hero?.birthDate | date:'longDate'}}
+            </li>
+            <li class="list-group-item" *ngIf="hero?.birthDate !== '01/01/1000'; else unknownDeathDate">
+              Died: {{hero?.deathDate| date : 'longDate'}}
+            </li>
+          </ul>
         </div>
       </div>
-      <hr/>
-      <span>Submitted by: {{(user | async)?.$value | titlecase }}</span>
-      <span (click)="toggleSidebar()" class="float-right sources-ref">
-        Sources and References
-        <i class="fa fa-arrow-right" aria-hidden="true"></i>
-      </span>
-      <!-- <span (click)="_toggleOpened()" class="float-right sources-ref">
-        Sources and References
-        <i class="fa fa-arrow-right" aria-hidden="true"></i>
-      </span> -->
+      <div class="col">
+        <div class="name">{{hero?.name | titlecase }}</div>
+        <br>
+        <div [innerHTML]="hero?.achievementDetails | sanitizeHtml ">
+
+        </div>
+      </div>
     </div>
+    <hr/>
+    <span>Submitted by: {{(user | async)?.$value | titlecase }}</span>
+    <span (click)="toggleSidebar()" class="float-right sources-ref">
+      Sources and References
+      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </span>
   </div>
+</div>
 
 <sidebar [submission]="submission" (toggle)="toggleSidebar()" [@slideInOut]="toggleState"></sidebar>

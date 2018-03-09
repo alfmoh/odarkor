@@ -29,6 +29,7 @@ export class HeroFormComponent {
 
   currentUpload: Submission;
   selectedFiles: FileList;
+  singleSource = "";
   sources = [];
 
   constructor(
@@ -48,7 +49,7 @@ export class HeroFormComponent {
       knownFor: ["", [Validators.required, Validators.maxLength(35)]],
       // achievementDetails: ["", [Validators.required, Validators.minLength(700)]],
       achievementDetails: ["", [Validators.required]],
-      image: ["", [FileValidator.validate, FileTypeValidator.validate]],
+      image: ["", [ FileTypeValidator.validate]],
       birthDate: [timeOptions.defaultDate, Validators.required],
       deathDate: [timeOptions.defaultDate, Validators.required]
       // sourcesAndRef: ["", [Validators.required, Validators.min(1)]]
@@ -59,7 +60,9 @@ export class HeroFormComponent {
   }
 
   addNewSource(source) {
-    if (source) this.sources.push(source);
+    this.singleSource = source;
+    if (source) this.sources.push(this.singleSource);
+    this.singleSource = " ";
   }
 
   textBoxContentChanged(input) {
