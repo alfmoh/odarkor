@@ -1,3 +1,4 @@
+import { UserService } from './../../../shared/services/user.service';
 import { Status } from "./../../../shared/enums/status";
 import { Subscription } from "rxjs/Subscription";
 import { Component, OnInit } from "@angular/core";
@@ -14,8 +15,14 @@ export class HeroesListComponent {
   submissions: Submission[];
   selected = "submissions";
 
-  constructor(private heroService: HeroService) {
+  loggedInUser;
+
+  constructor(
+    private userService: UserService,
+    private heroService: HeroService) {
     this.unapproved();
+      userService.getUser()
+        .subscribe(user => this.loggedInUser = user.email)
   }
 
   unapproved() {
@@ -38,4 +45,12 @@ export class HeroesListComponent {
       .subscribe(approved => (this.submissions = approved));
     this.selected = Status.rejected;
   }
+
+  makeModerator(email) {
+    if(email.value.mail)
+    this.userService.makeModerator(email.value.mail);
+  }
+  // unmakeModerator(email) {
+  //   this.userService.unmakeModerator(email.value.mail);
+  // }
 }

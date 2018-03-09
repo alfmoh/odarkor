@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-2">
       <ul class="list-group">
         <li (click)="unapproved()" 
           [ngClass]="{'list-group-item-primary':selected =='submissions'}" 
@@ -12,6 +12,19 @@
           [ngClass]="{'list-group-item-danger':selected == 'rejected'}" 
           class="list-group-item">Rejected</li>
       </ul>
+      <br>
+      <form #f="ngForm" [hidden]="loggedInUser != 'alfmohenu@gmail.com'" (ngSubmit)="makeModerator(f)">
+          <div class="form-group">
+              <input
+              required
+              name="mail"
+              ngModel #mail="ngModel" 
+              type="text" 
+              class="form-control approve-mod" #mail>
+              <button (click)="makeModerator(f)" class="btn btn-success">Submit</button>
+              <!-- <button (click)="unmakeModerator(f)" class="btn btn-danger">Submit</button> -->
+          </div>
+      </form>
     </div>
     <div class="col-10">
       <table class="table table-bordered table-hover">

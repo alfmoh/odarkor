@@ -6,6 +6,8 @@ select {
     float: right;
     margin-top: 5px;
     margin-bottom: 15px;
+    width: 25%;
+    text-align: center;
 }
 
 .clear-float {

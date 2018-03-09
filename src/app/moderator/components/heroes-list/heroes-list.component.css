@@ -2,3 +2,7 @@ li {
     cursor: pointer;
     text-align: center;
 }
+
+.approve-mod {
+    margin-bottom: 5px;
+}

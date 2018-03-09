@@ -1,5 +1,11 @@
-export enum Status {
-  unapproved = "submissions", //TODO: change submissions to unapproved and update backend.
-  approved = "approved",
-  rejected = "rejected"
+export class Status {
+  static get unapproved() {
+    return "submissions";
+  }
+  static get approved() {
+    return "approved";
+  }
+  static get rejected() {
+    return "rejected";
+  }
 }

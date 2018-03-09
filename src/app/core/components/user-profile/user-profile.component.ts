@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   user$: Observable<firebase.User>;
   submittedHeroes = [];
   userId;
-  status = "approved";
+  status: Status = "approved";
 
   constructor(
     private heroService: HeroService,
