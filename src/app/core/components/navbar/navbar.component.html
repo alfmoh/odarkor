@@ -60,7 +60,7 @@
         <li ngbDropdown *ngIf="user$ | async as user; else anonymousUser" class="nav-item dropdown">
           <a
           ngbDropdownToggle class="nav-link dropdown-toggle user" id="dropdown01" aria-haspopup="true"
-            aria-expanded="false">{{user.displayName | customTitleCase}}</a>
+            aria-expanded="false">{{((loggedInUser|async)?.name ? (loggedInUser|async)?.name : user.email) | customTitleCase}}</a>
             
             
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">

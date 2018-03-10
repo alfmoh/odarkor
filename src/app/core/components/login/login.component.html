@@ -1,5 +1,93 @@
 <div class="container">
-  <button
-  (click)="login()"
-  class="btn btn-primary">Login with Google</button>
+  
+<div class="forms">
+
+  <div class="sign-in">
+      <h3>Sign In</h3>
+      <form novalidate #fSignIn="ngForm" (submit)="loginEmail(fSignIn.value)">
+        <div class="form-group">
+          <label for="signInEmail">Email</label>
+    
+          <input 
+          class="form-control" 
+          name="signInEmail"
+          email 
+          ngModel 
+          #signInEmail="ngModel" 
+          required type="email">
+    
+          <span class="error" *ngIf="signInEmail.touched
+          && signInEmail.hasError('required')">Valid email required</span>
+    <br>
+          <label for="signInPassword">Password</label>
+          <input
+          class="form-control" 
+          name="signInPassword" 
+          ngModel 
+          #signInPassword="ngModel" 
+          required type="password">
+    
+          <span class="error" *ngIf="signInPassword.touched
+          && signInPassword.hasError('required')">Password is required</span>
+          <br>
+    
+          <br>
+          <button type="submit" [disabled]="fSignIn.invalid" class="btn btn-success">Sign In</button>
+        </div>
+      </form>
+  </div>
+
+  <div class="register">
+      <h3>Register</h3>
+      <form novalidate #fRegister="ngForm" (submit)="regEmail(fRegister.value)">
+        <div class="form-group">
+
+          <label for="registerEmail">Email</label>
+    
+          <input
+          email 
+          class="form-control" 
+          name="registerEmail" 
+          ngModel 
+          #registerEmail="ngModel" 
+          required type="email">
+    
+          <span class="error" *ngIf="registerEmail.touched
+          && registerEmail.hasError('required')">Valid email required</span>
+    <br>
+          <label for="registerPassword">Password</label>
+          <input
+          class="form-control" 
+          name="registerPassword" 
+          ngModel 
+          #registerPassword="ngModel" 
+          required type="password">
+    
+          <span class="error" *ngIf="registerPassword.touched
+          && registerPassword.hasError('required')">Password is required</span>
+    <br>
+          
+          <label for="username">Username</label>
+    
+          <input 
+          class="form-control" 
+          name="username" 
+          ngModel 
+          #username="ngModel" 
+          required type="text">
+    
+          <span class="error" *ngIf="username.touched
+          && username.hasError('required')">Username is required</span>
+    
+    <br>
+          <button type="submit" [disabled]="fRegister.invalid" class="btn btn-primary">Register</button>
+        </div>
+      </form>
+  </div>
+
+  <div class="input-group">
+      <i (click)="login()" class="fa fab fa-google-plus fa-3x"></i>
+      <!-- <i (click)="login()" class="fa fab fa-facebook-square fa-3x"></i> -->
+  </div>
+</div>
 </div>

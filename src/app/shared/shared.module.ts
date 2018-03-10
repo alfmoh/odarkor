@@ -23,6 +23,7 @@ import { SubmissionDto } from "./models/submission";
 import { Hero } from "./models/hero";
 import { QuillModule } from "ngx-quill";
 import { SubmissionFactory } from "../others/utilities/submission-factory";
+import { AlertifyService } from './services/Alertify.service';
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import { SubmissionFactory } from "../others/utilities/submission-factory";
     UserService,
     SubmissionFactory,
     PreventUnsavedChanges,
+    AlertifyService
   ],
   exports: [
     HeroFormComponent,

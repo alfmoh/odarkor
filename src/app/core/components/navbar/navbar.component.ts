@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   heroes = [];
   user$: Observable<firebase.User>;
   appUser$: Observable<User>;
-
+  loggedInUser;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +39,10 @@ export class NavbarComponent implements OnInit {
     private auth: AuthService
   ) {
     this.user$ = userService.getUser();
+    userService.getUser()
+      .subscribe(user => {
+        if(user) this.loggedInUser = userService.getUserById(user.uid)
+      })
     this.appUser$ = auth.appUser$;
     this.heroService.getAll(Status.approved).subscribe(heroes => {
       heroes.forEach(hero => {

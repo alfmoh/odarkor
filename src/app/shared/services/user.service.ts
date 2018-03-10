@@ -17,9 +17,10 @@ getUser() : Observable<firebase.User> {
   return this.afAuth.authState;
 }
 
-save(user: firebase.User){
+save(user: firebase.User, name=""){
+  let username = user.displayName ? user.displayName : name;
   this.db.object("/users/" + user.uid).update({
-    name: user.displayName,
+    name: username,
     email: user.email
   })
 }

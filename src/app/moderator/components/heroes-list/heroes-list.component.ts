@@ -22,7 +22,10 @@ export class HeroesListComponent {
     private heroService: HeroService) {
     this.unapproved();
       userService.getUser()
-        .subscribe(user => this.loggedInUser = user.email)
+        .subscribe(user => {
+          if(user)
+            return this.loggedInUser = user.email
+        })
   }
 
   unapproved() {

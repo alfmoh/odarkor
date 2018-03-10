@@ -22,7 +22,9 @@
         "styles.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/quill/dist/quill.core.css",
-        "../node_modules/quill/dist/quill.snow.css"
+        "../node_modules/quill/dist/quill.snow.css",
+        "../node_modules/alertifyjs/build/css/alertify.min.css",
+        "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.slim.min.js",
@@ -30,7 +32,8 @@
         "../node_modules/popper.js/dist/umd/popper.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/automapper-ts/dist/automapper.min.js",
-        "../node_modules/quill/dist/quill.js"
+        "../node_modules/quill/dist/quill.js",
+        "../node_modules/alertifyjs/build/alertify.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
