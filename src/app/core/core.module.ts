@@ -6,7 +6,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HomeComponent } from "./components/home/home.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { LoginComponent } from "./components/login/login.component";
+import { AuthComponent } from "./components/auth/auth.component";
 import { PostComponent } from "./components/post/post.component";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { AuthGuardService } from "../shared/services/auth-guard.service";
@@ -25,7 +25,7 @@ import { FooterComponent } from "./components/footer/footer.component";
     BrowserAnimationsModule,
     RouterModule.forChild([
       { path: "", component: HomeComponent },
-      { path: "login", component: LoginComponent },
+      { path: "auth", component: AuthComponent },
       { path: "profile/:id", component: ProfileComponent },
       { path: "about", component: AboutComponent },
       {
@@ -38,7 +38,7 @@ import { FooterComponent } from "./components/footer/footer.component";
   declarations: [
     HomeComponent,
     NavbarComponent,
-    LoginComponent,
+    AuthComponent,
     PostComponent,
     ProfileComponent,
     UserProfileComponent,

@@ -31,7 +31,6 @@
           && signInPassword.hasError('required')">Password is required</span>
           <br>
     
-          <br>
           <button type="submit" [disabled]="fSignIn.invalid" class="btn btn-success">Sign In</button>
         </div>
       </form>
@@ -85,7 +84,7 @@
       </form>
   </div>
 
-  <div class="input-group">
+  <div class="input-group social-sites">
       <i (click)="login()" class="fa fab fa-google-plus fa-3x"></i>
       <!-- <i (click)="login()" class="fa fab fa-facebook-square fa-3x"></i> -->
   </div>

@@ -47,9 +47,9 @@ export class HeroesAddEditComponent implements OnInit {
         .getSubmission(this.heroId, this.status)
         .subscribe(submission => {
           this.sources = submission.sources;
-          this.submissionFactory.userDuringModeration.uid =
+          this.submissionFactory.postOwner.uid =
             submission.submittedByUserId;
-          this.submissionFactory.userDuringModeration.displayName =
+          this.submissionFactory.postOwner.displayName =
             submission.submittedBy;
         });
       this.heroService.get(this.heroId, this.status).subscribe(hero => {
@@ -142,7 +142,7 @@ export class HeroesAddEditComponent implements OnInit {
               );
             }
             this.router.navigate(["/heroes/submissions"]);
-          }, 1500);
+          }, 1000);
         }
       },
       reason => {}

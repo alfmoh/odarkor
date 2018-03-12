@@ -60,10 +60,7 @@ export class PostsService {
             ? Constants.defaultImageUrl
             : this.uploadTask.snapshot.downloadURL;
 
-          this.submission.submittedBy = this.user.displayName;
-
           delete this.submission.progress;
-          this.submission.sources = submissionDto.sources;
 
           this.create(this.submission);
           this.open(modalBoxContent);
@@ -75,10 +72,7 @@ export class PostsService {
         ? Constants.defaultImageUrl
         : this.uploadTask.snapshot.downloadURL;
 
-      this.submission.submittedBy = this.user.displayName;
-
       delete this.submission.progress;
-      this.submission.sources = submissionDto.sources;
 
       this.create(this.submission);
       this.open(modalBoxContent);

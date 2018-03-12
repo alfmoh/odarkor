@@ -5,6 +5,7 @@ a:link, a:hover, a:active {
 .module {
   margin: 20px 0;
   text-align: center;
+  animation: fade-in 0.4s ease-in-out;
 }
 
 .module:hover {
@@ -38,6 +39,15 @@ a:link, a:hover, a:active {
 .hideSquad {
   content: "";
   visibility: hidden;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media only screen and (min-width: 480px) {

@@ -54,7 +54,7 @@
           <li
           closeMenu
           [menu]="menu"
-          class="nav-link my-2 my-sm-0 mr-sm-2" [routerLink]="['/login']">Login</li>
+          class="nav-link my-2 my-sm-0 mr-sm-2" [routerLink]="['/auth']">Login</li>
         </ng-template>
 
         <li ngbDropdown *ngIf="user$ | async as user; else anonymousUser" class="nav-item dropdown">
@@ -79,8 +79,8 @@
           </div>
         </li>
 
-        <li><i title="Support" class="fa far fa-heart fa-large"></i></li>
-        <li><i title="Become a Moderator!" class="fa fas fa-edit fa-large"></i></li>
+        <!-- <li><i title="Support" class="fa far fa-heart fa-large"></i></li>
+        <li><i title="Become a Moderator!" class="fa fas fa-edit fa-large"></i></li> -->
 
       </ul>
 

@@ -24,11 +24,14 @@ export class AuthService {
   }
 
   login() {
-    let returnUrl = this.route.snapshot.queryParamMap.get("returnUrl") || "/";
-    localStorage.setItem("returnUrl", returnUrl);
+    this.redirect();
 
     this.afAuth.auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(user => {
+        this.alertify.success("Logged In");
+        this.userService.save(user.user, user.user.displayName);
+      })
       .catch(error => this.handleError(error));
   }
 
@@ -36,8 +39,9 @@ export class AuthService {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
       .then(user => {
-          this.alertify.success("User Registered!")
+        this.alertify.success("User Registered!");
         this.userService.save(user, username);
+        this.redirect();
       })
       .catch(error => this.handleError(error));
   }
@@ -47,8 +51,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(user => {
         this.alertify.success("Logged In");
-        let returnUrl = this.route.snapshot.queryParamMap.get("returnUrl") || "/";
-        localStorage.setItem("returnUrl", returnUrl);
+        this.redirect();
       })
       .catch(error => this.handleError(error));
   }
@@ -67,5 +70,10 @@ export class AuthService {
 
   private handleError(error: Error) {
     this.alertify.error(error.message);
+  }
+
+  private redirect() {
+    let returnUrl = this.route.snapshot.queryParamMap.get("returnUrl") || "/";
+    return localStorage.setItem("returnUrl", returnUrl);
   }
 }

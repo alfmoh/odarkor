@@ -1,4 +1,4 @@
-import { Constants } from './constants';
+import { Constants } from "./constants";
 import { Injectable } from "@angular/core";
 import { UserService } from "./../../shared/services/user.service";
 import { Submission } from "../../shared/models/submission";
@@ -6,8 +6,9 @@ import { Submission } from "../../shared/models/submission";
 @Injectable()
 export class SubmissionFactory {
   user;
+  username;
 
-  userDuringModeration = {
+  postOwner = {
     uid: "",
     displayName: ""
   };
@@ -16,7 +17,13 @@ export class SubmissionFactory {
     private submission: Submission,
     private userService: UserService
   ) {
-    userService.getUser().subscribe(user => (this.user = user));
+    userService.getUser().subscribe(user => {
+      this.userService
+        .getUserById(user.uid)
+        .subscribe(userUsingId => (this.username = userUsingId.name));
+
+      return (this.user = user);
+    });
   }
 
   retriveCountryAndCode(input: any) {
@@ -43,7 +50,7 @@ export class SubmissionFactory {
     let { country, code } = this.retriveCountryAndCode(input);
     let { birthDate, deathDate } = this.retriveBirthDeathDate(input);
 
-    if(!input.imageUrl) input.imageUrl = Constants.defaultImageUrl;
+    if (!input.imageUrl) input.imageUrl = Constants.defaultImageUrl;
 
     let hero = Object.assign({}, input, {
       birthDate,
@@ -55,10 +62,10 @@ export class SubmissionFactory {
     this.submission.sources = sources;
     this.submission.hero = hero;
     if (fromModerator) {
-      this.submission.submittedBy = this.userDuringModeration.displayName;
-      this.submission.submittedByUserId = this.userDuringModeration.uid;
+      this.submission.submittedBy = this.postOwner.displayName;
+      this.submission.submittedByUserId = this.postOwner.uid;
     } else {
-      this.submission.submittedBy = this.user.displayName;
+      this.submission.submittedBy = this.username;
       this.submission.submittedByUserId = this.user.uid;
     }
 
