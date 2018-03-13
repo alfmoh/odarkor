@@ -15,6 +15,7 @@ import { UserProfileComponent } from "./components/user-profile/user-profile.com
 import { FormsModule } from "@angular/forms";
 import { CustomRouteReuseStrategy } from "./components/navbar/CustomReuseRouteStrategy";
 import { FooterComponent } from "./components/footer/footer.component";
+import { MomentModule } from 'angular2-moment';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { FooterComponent } from "./components/footer/footer.component";
     SharedModule,
     OthersModule,
     FormsModule,
+    MomentModule,
     BrowserAnimationsModule,
     RouterModule.forChild([
       { path: "", component: HomeComponent },

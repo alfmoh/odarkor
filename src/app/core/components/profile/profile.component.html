@@ -19,10 +19,10 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Country: {{hero?.country}}</li>
             <li class="list-group-item" *ngIf="hero?.birthDate !== '01/01/1000'; else unknownBirthDate">
-              Born: {{hero?.birthDate | date:'longDate'}}
+              Born: {{hero?.birthDate | amParse:'DD/MM/YYYY'| amDateFormat:'LL' }}
             </li>
             <li class="list-group-item" *ngIf="hero?.deathDate !== '01/01/1000'; else unknownDeathDate">
-              Died: {{hero?.deathDate| date : 'longDate'}}
+              Died: {{hero?.deathDate| amParse:'DD/MM/YYYY' | amDateFormat:'LL'}}
             </li>
           </ul>
         </div>
