@@ -2,6 +2,11 @@
   background: #efefef;
 }
 
+.heading {
+  text-align: center;
+  color: darkgray;
+}
+
 .submitForm {
   padding-top: 20px;
   padding-bottom: 20px;

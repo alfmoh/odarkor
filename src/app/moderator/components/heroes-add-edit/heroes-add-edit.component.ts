@@ -58,6 +58,7 @@ export class HeroesAddEditComponent implements OnInit {
           this.form.controls.country.setValue(
             [this.hero.code, this.hero.country].join(",")
           );
+        this.form.controls.gender.setValue(this.hero.gender);
         this.form.controls.knownFor.setValue(this.hero.knownFor);
         this.form.controls.achievementDetails.setValue(
           this.hero.achievementDetails
@@ -70,6 +71,7 @@ export class HeroesAddEditComponent implements OnInit {
     this.form = fb.group({
       name: ["", Validators.required],
       country: ["", Validators.required],
+      gender: ["", Validators.required],
       knownFor: ["", Validators.required],
       achievementDetails: ["", [Validators.required]],
       imageUrl: ["", [Validators.required]],

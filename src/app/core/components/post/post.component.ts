@@ -11,8 +11,20 @@ import 'rxjs/add/operator/map';
 export class PostComponent {
   submissions$;
 
+    alerts = [
+    {
+      id: 2,
+      type: "info"
+    }
+  ];
+
   constructor(private heroService: HeroService) {
     this.submissions$ = this.heroService.getAll(Status.approved);
+  }
+
+  public closeAlert(alert: any) {
+    const index: number = this.alerts.indexOf(alert);
+    this.alerts.splice(index, 1);
   }
 
 }

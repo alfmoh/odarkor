@@ -21,7 +21,7 @@
             <li class="list-group-item" *ngIf="hero?.birthDate !== '01/01/1000'; else unknownBirthDate">
               Born: {{hero?.birthDate | date:'longDate'}}
             </li>
-            <li class="list-group-item" *ngIf="hero?.birthDate !== '01/01/1000'; else unknownDeathDate">
+            <li class="list-group-item" *ngIf="hero?.deathDate !== '01/01/1000'; else unknownDeathDate">
               Died: {{hero?.deathDate| date : 'longDate'}}
             </li>
           </ul>

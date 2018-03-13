@@ -1,3 +1,8 @@
+<p class="alert" *ngFor="let alert of alerts">
+    <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">Currently, most of the contents are empty, awaiting your
+      <a [routerLink]="['/article-form']">contribution</a>
+    </ngb-alert>
+  </p>
 <div class="container">
   <div class="module" *ngFor="let heroes of submissions$ | async ">
     <a class="routing" [routerLink]="['/profile/',heroes?.$key]">

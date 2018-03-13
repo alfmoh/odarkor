@@ -62,7 +62,6 @@ export class HeroFormComponent {
   addNewSource(source) {
     this.singleSource = source;
     if (source) this.sources.push(this.singleSource);
-    this.singleSource = " ";
   }
 
   textBoxContentChanged(input) {

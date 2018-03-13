@@ -6,9 +6,10 @@ export class TimeOptions {
     public defaultDate = { date: { year: 1000, month: 1, day: 1 } }
 
     public birthDateOptions: IMyDpOptions = {
-        editableDateField: false,
+        editableDateField: true,
         openSelectorOnInputClick: true,
         showTodayBtn: false,
+        dateFormat: 'dd/mm/yyyy',
         disableSince: {
             year: this.currentTime.getFullYear() - 14,
             month: this.currentTime.getMonth() + 1,
@@ -17,7 +18,8 @@ export class TimeOptions {
     };
 
     public deathDateOptions: IMyDpOptions = {
-        editableDateField: false,
+        editableDateField: true,
+        dateFormat: 'dd/mm/yyyy',
         openSelectorOnInputClick: true,
         maxYear: this.currentTime.getFullYear()
     }

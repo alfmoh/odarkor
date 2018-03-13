@@ -1,3 +1,4 @@
+import { AnalyticsService } from './analytics.service';
 import { SubmissionDto } from "./../shared/models/submission";
 import { FormsModule } from "@angular/forms";
 import { SharedModule } from "./../shared/shared.module";
@@ -42,6 +43,6 @@ import { ZippyComponent } from "./components/zippy/zippy.component";
     SidebarComponent,
     ZippyComponent
   ],
-  providers: [Hero, SubmissionDto, Submission, UserService]
+  providers: [Hero, SubmissionDto, Submission, UserService,AnalyticsService]
 })
 export class OthersModule {}

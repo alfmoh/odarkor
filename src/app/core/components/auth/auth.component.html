@@ -74,7 +74,8 @@
           ngModel 
           #username="ngModel" 
           required type="text">
-    
+          <em>**This username will be attributed to your articles.**</em>
+          <em>**Advisable to use your fullname.**</em>
           <span class="error" *ngIf="username.touched
           && username.hasError('required')">Username is required</span>
     
